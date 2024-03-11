@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="h-full w-screen flex bg-zinc-800 justify-center items-center ">
+
+    <div id="outer-cr" class="rounded-2xl bg-zinc-800 px-10 py-10 text-white border-2 border-zinc-300">
+        <h1 class="text-xl">Create a new post.</h1>
+        <hr class="opacity-10 mt-3">
+        <div class="">
+            <form action="/setproduct" method="post" enctype="multipart/form-data">
+                <input type="file" name="productImage" id="" class="block w-full text-black px-3 py-2 mt-2">
+                <input type="text" name="title" id="" class="block w-full px-3 text-black py-2 mt-2 rounded-lg" placeholder="Title">
+                <input type="number" name="price" id="" class="block w-full px-3 text-black py-2 mt-2 rounded-lg" placeholder="Title">
+                <textarea type="text" name="brand" id="" class="block text-black w-full px-3 py-2 mt-2 h-40 rounded-lg" placeholder="Description"></textarea>
+                <input type="submit" value="Create Product" class="block w-full text-black px-3 py-2 mt-2 bg-red-700 rounded-full">
+            </form>
+        </div>
+    
+    </div>
+</div>
+</body>
+</html>

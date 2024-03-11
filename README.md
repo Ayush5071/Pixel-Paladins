@@ -7,7 +7,7 @@
 - PATIL SAKSHI SUNIL [Sakshi's Profile](https://github.com/Night-O/)
 ## Proposed Features : 
 - User Registration and Login
-  - Allow user to create accounts an dlogin securely
+  - Allow user to create accounts and login securely
 - Product Catalogue :
   - Display a list of products with details such as name,description,price,brand and images.
 - Order History :

@@ -1,0 +1,461 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+    box-sizing: border-box;
+    font-family: 'montserrat';
+
+}
+html,body{
+    height:100%;
+    width: 100%;
+    /* perspective: 400px; */
+}
+.nav{
+    height: 110px;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 150px;
+    gap: 50px;
+    position: fixed;
+    z-index: 99;
+
+}
+.nav img{
+    height: 50px;
+
+}
+.nav h4{
+   text-transform: uppercase;
+   font-weight: 500;
+}
+#page1 #arrow{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* background-color: aqua; */
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0%;
+    left: -2%;
+    border: 2px solid #95c11e;
+    transition: all 0.5s ease;
+
+}
+#arrow i{
+    font-size: 57px;
+    font-weight: 100;
+}
+#arrow:hover{
+    scale: 0.6;
+    background-color: #95c11E;
+
+}
+video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+}
+#main{
+    position: relative;
+    background-color: rgba(0, 0, 0,0.4);
+}
+#page1{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+}
+/* pseudo elements is used to write or implement something using css */
+#page1 h1::before{
+        content: "PET.BOND.PLAY.";
+        position: absolute; /* h1 me jo likha tha uske upar hi ja ke baith gya */
+        color: black;
+        top: -5px;
+        left: -5px;
+        -webkit-text-stroke: 1px #95c11e;/* only 2 properties color and width*/
+        z-index: -1;
+}
+#page1 h1{
+    font-size: 140px;
+    font-weight: 900;
+    position: relative;
+}
+#page1 h2{
+    font-size: 30px;
+    font-weight: 800;
+    margin: 10px 0px;
+}
+#page1 p{
+    font-size: 20px;
+    font-weight: 450;
+    width: 40%;
+}
+#page2{
+    min-height: 100vh;
+    width: 100%;
+    z-index: 10;
+}
+#cursor{
+    height: 20px;
+    width: 20px;
+    background-color: #95c11E;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 111;
+}
+#cursor-blur{
+    height: 300px;
+    width: 300px;
+    background-color: #96c11e3b;
+    filter: blur(40px);
+    border-radius: 50%;
+    position: fixed;
+    z-index: 9;
+}
+#scroller{
+    background-color: transparent;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+#scroller::-webkit-scrollbar{
+       display: none;
+}
+/* for infinite loop animation --- overflowx,overflow y,IN .scroller-in me animation apply honge through animation-name:scoll(that is name of animation we created)  */
+@keyframes scroll{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+#scroller h4{
+    display: inline-block;
+    /* white-space: nowrap; */
+    color: transparent;
+    font-size: 90px;
+    font-weight: 900;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-right: 40px;
+    -webkit-text-stroke: 2px #95c11E; /* it gives a boundary on only above part of the letter ,it is not same as border ,its different*/
+    transition: all 0.3s;
+}
+#scroller h4:hover{
+    color: #95c11E;
+    font-size: 85px;
+}
+.scroller-in{
+    display: inline-block;
+    white-space: nowrap;
+    animation-name: scroll;
+    animation-duration: 32s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#about-us{
+    height: 35vh;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 50px;
+}
+#about-us img{
+    height: 220px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 2px solid #95c11E;
+}
+#about-us #about-us-in {
+    text-align: center;
+    margin: auto 40px ; 
+    /* width: 30%; */
+} 
+#about-us #about-us-in h3{
+    font-size: 55px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+#about-us #about-us-in p{
+    font-size: 14px;
+    font-weight: 550;
+    line-height: 20px;
+    text-align: center;
+}
+#cards-container{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    z-index: 10;
+} 
+.cards{
+    height: 90%;
+    width: 16%;
+    /* background-color: aquamarine; */
+    border-radius: 30px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #95c11E;
+    /* jo kuch bhi cards se bahar ja rha hai usko hidden krdo from next line it is done through overflow hidden attribute */
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+#card-1{
+    background-image: url('./assets/card1.jpg');
+}
+#card-2{
+    background-image: url(./assets/card2.jpg);
+}
+#card-3{
+    background-image: url(./assets/card3.jpg);
+}
+.overlay{
+    height: 100%;
+    width: 100%;
+    background-color: #95c11E;
+    padding-top: 70px;
+    padding: 25px;
+    opacity: 0;
+    transition: all 0.7s ease;
+}
+.cards:hover .overlay{
+    opacity:1;
+}
+.cards:hover{
+    transform: rotate3d(1,-1,0,19deg);
+}
+.overlay h4{
+    color: black;
+    font-size: 33px;
+    text-transform: uppercase;
+    font-weight: 800;
+
+}
+.overlay p {
+    color: black;
+}
+#jungle-container{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#back-page {
+    overflow: hidden;
+    height: 30vh;
+    width: 50%;
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+    background-image: url('./assets/jungle.jpg');
+    background-position: center;
+    background-size: cover;
+    transition: all 0.4s linear; /* Smooth transition for background color change */
+    border-radius: 90px;
+    border: 3px solid #35480072;
+    box-shadow: 0px 0px 60px #354800d7;
+}
+#back-page h4{
+    font-size: 24px;
+    z-index: 2;
+    transition: all 0.45s linear;
+}
+#page3{
+    height: 70vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+/* very very very !!!!! important jab bhi kisiko position : absolute dete ho to uske parents ko Position: relative dena mat bhulna */
+#page3 p{
+    font-size: 34px;
+    font-weight: 700;
+    width: 60%;
+    text-align: center;
+    line-height: 30px;
+}
+#page3 img{
+    position: absolute;
+    height: 60px ;
+}
+#page3 #colon1{
+    left: 15%;
+    top: 25%;
+}
+#page3 #colon2{
+       bottom: 25%;
+       right: 15%;
+}
+#page4{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+}
+.elem{
+    height: 50%;
+    width: 25%;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+}
+.elem h2{
+    width: 100%;
+    height: 100%;
+    background-color: #95c11E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000;
+    position: absolute;
+    z-index: 10;
+    transition: all ease 0.5s;
+}
+.elem img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scale: 1.1;
+    transition: all ease 0.5s;
+}
+.elem:hover img{
+    scale: 1;
+}
+.elem:hover h2{
+    color: #fff;
+    background-color: transparent;
+}
+/* relative absolute ke upar aa jata hai ,i just noticed,aur suno page 4 ko position realtive bhi dena hoga */
+#page4 h1{
+    font-size: 75px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    position: absolute;
+    top: 16px;
+    color: #000;
+    -webkit-text-stroke: 2px white;
+}
+#footer{
+    height: 40vh;
+    width: 100%;
+    background:linear-gradient(to left bottom,#119F3A,#ace022,#6c871f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#fbox1{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction:row;
+    width: 100%;
+    height: 70%;
+    /* column-gap: 100px; */
+}
+#fbox2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.quick-links{
+    display: flex;
+    flex-direction: column;
+}
+.social-media{
+    display: flex;
+    flex-direction: column;
+}
+.quick-links a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: fantasy;
+    line-height: 25px;
+    color: #000;
+}
+.social-media a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: fantasy;
+    line-height: 25px;
+    /* color: #000; */
+}
+.store-hours p{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: fantasy;
+    line-height: 25px;   
+    /* color: #000; */
+}
+.contact-info p{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: fantasy;
+    line-height: 25px;
+    color: #000;
+}
+.newsletter p{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: fantasy;
+    line-height: 25px;
+}
+.copyright p{
+    font-size: 14px;
+    font-weight: 10;
+    font-family: fantasy;
+    line-height: 25px;
+    color: #000;
+}
+/* FOR ARROW TAKE IT FROM REMIXICON WEBSITE IT IS  AFREE ANIMATED WEBSITE FOR SVG...*/
+
+
+
+
+
+
+
+
+
+
+
+

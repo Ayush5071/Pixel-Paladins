@@ -34,10 +34,10 @@
                 </div>
             </div>
             <h1 class="text-3xl font-semibold mt-2"><%= seller.brandname %></h1>
-            <h3 class="text-3xl font-semibold mt-2"><%= seller.brandname %></h3>
+            <h3 class="text-3xl font-semibold mt-2"><%= seller.email %></h3>
             <h3 class="text-md">&commat;<%= seller.username %></h3>
             <a href="/edit" class="px-7 py-2 bg-zinc-900 rounded-full text-xs font-semibold mt-2">Edit</a>
-            <a href="/add" class="px-10 py-2 rounded-lg bg-red-600 text-xs font-semibold mt-5">Add New post</a>
+            <a href="/addproduct?username=<%= seller.username %>" class="px-10 py-2 rounded-lg bg-red-600 text-xs font-semibold mt-5">Add New product</a>
         </div>
     </div>
 </div>
