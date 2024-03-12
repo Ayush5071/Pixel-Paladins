@@ -11,7 +11,7 @@
         <div id="nav">
             <div id="logo">logo</div>
             <div id="right">
-                <a href="#">Home</a><a href="#">Cart</a><a href="#">Bot</a><a href="#">Logout</a>
+                <a href="#">Home</a><a href="/cart/<%= user %>">Cart</a><a href="#">Bot</a><a href="">Logout</a>
             </div>
         </div>
         <div id="page1">
@@ -27,7 +27,9 @@
                         <h3>e.price</h3>
                         <h3>e.brand</h3>
                         <a href="/product/<%= e._id %>">see more</a>
-                        <a href="">addtocart</a>
+                        <a href="#" class="add-to-cart" data-productid="<%= e._id %>">Add to Cart</a>
+                        <a href="#" class="remove-from-cart" data-productid="<%= e._id %>">Remove from Cart</a>
+
                     </div>
                 </div>
                 <% }) %>
@@ -35,5 +37,7 @@
         </div>
 
 <script src="/javascripts/product.js"></script>   
+
+
 </body>
 </html>

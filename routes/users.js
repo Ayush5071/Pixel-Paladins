@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
   profileImage: String,
   cart: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref:'product'
+    ref:'Product'
   }],
   number: Number,
   purchases: {

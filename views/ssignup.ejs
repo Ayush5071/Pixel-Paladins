@@ -1,7 +1,9 @@
 <% include ./components/header %>
-<div id="page-1">
+<div id="formcontainer">
+<div id="page-f">
     <div id="form">
         <form action="/sregister" method="post">
+            <h2>SELLER REGISTRATION</h2>
             <label for="username">Username :</label>
             <input type="text" name="username" id="">
             <label for="password">Password :</label>
@@ -10,8 +12,10 @@
             <input type="email" name="email" id="">
             <label for="brandname">Brandname :</label>
             <input type="text" name="brandname" id="">
-            <input type="submit" value="submit">
+            <input type="submit" value="Register" class="submit">
+            <p>Please maintain BUISNESS ETHICS and don't <br> add any unsafe or cursed products here.</p>
         </form>
     </div>
+</div>
 </div>
 <% include ./components/footer %>

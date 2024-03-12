@@ -29,6 +29,10 @@ router.get('/',function(req,res){
     res.render('index');
 });
 
+router.get('/bot',(req,res)=>{
+    res.render("chatbot")
+})
+
 // Route for seller profile page
 router.get('/sprofile', async function(req, res) {
     try {
@@ -53,6 +57,62 @@ router.get('/sprofile', async function(req, res) {
         // Handle any errors that occur during the process
         console.error(error);
         res.redirect('/slogin'); // Redirect to login page or handle appropriately
+    }
+});
+
+router.post("/add-to-cart/:productId",isLoggedIn,async (req,res)=>{
+    const productId = req.params.productId;
+    const username = req.session.passport.user;
+    console.log(username)
+    const user = await userModel.findByUsername(username)
+    user.cart.push(productId);
+    await user.save();
+    console.log(user)
+    res.status(200)
+})
+
+
+
+//code for cart 
+
+router.get("/cart/:username",async (req,res)=>{
+    const username = req.params.username;
+    console.log(username)
+    const user = await userModel.findOne({username:username}).populate('cart');
+    console.log(user)
+    res.render("cart",{user})
+})
+
+
+// router.delete("/remove-from-cart/:productId",isLoggedIn,async (req,res)=>{
+//     const productId = req.params.productId;
+//     const username = req.session.passport.user;
+//     const user = await userModel.findByUsername(username)
+//     user.cart.pull(productId);
+//     await user.save();
+//     console.log(user)
+//     console.log("removed");
+//     res.status(200)
+// })
+
+router.delete("/remove-from-cart/:productId", isLoggedIn, async (req, res) => {
+    try {
+        const productId = req.params.productId;
+        const username = req.session.passport.user;
+        // Find the user by username
+        const user = await userModel.findOne({ username: username });
+        if (!user) {
+            // Handle case where user is not found
+            return res.status(404).json({ message: "User not found" });
+        }
+        // Remove productId from the user's cart
+        user.cart.pull(productId);
+        await user.save();
+        console.log("removed");
+        res.sendStatus(200); // Sending a 200 status code
+    } catch (error) {
+        console.error('Error removing product from cart:', error.message);
+        res.status(500).json({ message: "Internal Server Error" });
     }
 });
 
@@ -85,10 +145,13 @@ module.exports = router;
 router.get("/home",(req,res)=>{
     res.render('home')
 })
-router.get("/product",async (req,res)=>{
+
+router.get("/product",isLoggedIn,async (req,res)=>{
+    const user = req.session.passport.user
     let products = await productModel.find()
-    console.log(products)
-    res.render('products',{products});
+    console.log(products,user)
+
+    res.render('products',{products,user});
 })
 router.get("/addproduct", async (req, res) => {
     const username = req.query.username;

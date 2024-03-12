@@ -1,15 +1,19 @@
 <% include ./components/header.ejs %>
-<div id="page-1">
+<div id="formcontainer">
+<div id="page-f">
     <div id="form">
         <form action="/slogin" method="post">
             <!-- <label for="email">email</label>
             <input type="email" name="email" id=""> -->
+            <h2>SELLER LOGIN</h2>
             <label for="username">username</label>
             <input type="text" name="username" id="">
             <label for="password">Password</label>
             <input type="password" name="password" id="">
-            <input type="submit" value="submit">
+            <input type="submit" value="Login" class="submit">
+            <p>Please maintain BUISNESS ETHICS and don't <br> add any unsafe or cursed products here.</p>
         </form>
     </div>
+</div>
 </div>
 <% include ./components/footer.ejs %>

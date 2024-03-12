@@ -1,7 +1,9 @@
 <% include ./components/header %>
-<div id="page-1">
+<div id="formcontainer">
+<div id="page-f">
     <div id="form">
         <form action="/register" method="post">
+            <h2>BUYER'S REGISTERATION</h2>
             <label for="name">Full Name :</label>
             <input type="text" name="name" id="">
             <label for="username">Username :</label>
@@ -12,8 +14,10 @@
             <input type="number" name="number" id="">
             <label for="email">Email :</label>
             <input type="email" name="email" id="">
-            <input type="submit" value="submit">
+            <input type="submit" value="Register" class="submit">
+            <p>Please make sure that you read our <br> <span>TERMS AND CONDITION</span> before entering.</p>
         </form>
     </div>
+</div>
 </div>
 <% include ./components/footer %>
