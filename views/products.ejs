@@ -19,72 +19,18 @@
                 <input type="search" name="filter" id="filter" placeholder="Search items here">
             </div>
             <div id="products">
-                <div id="product">
-                    <div id="image"></div>
-                    <div id="data">
-                        <h3>Title</h3>
-                        <h3>Price</h3>
-                        <h3>brand</h3>
+    <% products.forEach((e)=>{ %>
+                <div class="product">
+                    <div class="image"></div>
+                    <div class="data">
+                        <h3>e.title</h3>
+                        <h3>e.price</h3>
+                        <h3>e.brand</h3>
+                        <a href="/product/<%= e._id %>">see more</a>
+                        <a href="">addtocart</a>
                     </div>
                 </div>
-                <div id="product">
-                    <div id="image"></div>
-                    <div id="data">
-                        <h3>Title</h3>
-                        <h3>Price</h3>
-                        <h3>brand</h3>
-                    </div>
-                </div>
-                <div id="product">
-                    <div id="image"></div>
-                    <div id="data">
-                        <h3>Title</h3>
-                        <h3>Price</h3>
-                        <h3>brand</h3>
-                    </div>
-                </div>
-                <div id="product">
-                    <div id="image"></div>
-                    <div id="data">
-                        <h3>Title</h3>
-                        <h3>Price</h3>
-                        <h3>brand</h3>
-                    </div>
-                </div>
-                <div id="product">
-                    <div id="image"></div>
-                    <div id="data">
-                        <h3>Title</h3>
-                        <h3>Price</h3>
-                        <h3>brand</h3>
-                    </div>
-                </div>
-                <div id="product">
-                    <div id="image"></div>
-                    <div id="data">
-                        <h3>Title</h3>
-                        <h3>Price</h3>
-                        <h3>brand</h3>
-                    </div>
-                </div>
-                <div id="product">
-                    <div id="image"></div>
-                    <div id="data">
-                        <h3>Title</h3>
-                        <h3>Price</h3>
-                        <h3>brand</h3>
-                    </div>
-                </div>
-                <div id="product">
-                    <div id="image"></div>
-                    <div id="data">
-                        <h3>Title</h3>
-                        <h3>Price</h3>
-                        <h3>brand</h3>
-                    </div>
-                </div>
-            </div>
-
+                <% }) %>
             </div>
         </div>
 

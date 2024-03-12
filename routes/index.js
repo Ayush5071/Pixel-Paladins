@@ -56,6 +56,22 @@ router.get('/sprofile', async function(req, res) {
     }
 });
 
+// Route to view specific product details
+router.get('/product/:productId', async (req, res) => {
+    try {
+        const productId = req.params.productId;
+        const product = await productModel.findById(productId);
+        if (!product) {
+            return res.status(404).send('Product not found');
+        }
+        res.render('product-detail', { product });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+module.exports = router;
+
 // router.post("/seller-profile-image",upload.single("profileimage"),async (req,res)=>{
 //     var username = req.session.username;
 //     console.log(username)
@@ -69,8 +85,10 @@ router.get('/sprofile', async function(req, res) {
 router.get("/home",(req,res)=>{
     res.render('home')
 })
-router.get("/product",(req,res)=>{
-    res.render('products');
+router.get("/product",async (req,res)=>{
+    let products = await productModel.find()
+    console.log(products)
+    res.render('products',{products});
 })
 router.get("/addproduct", async (req, res) => {
     const username = req.query.username;

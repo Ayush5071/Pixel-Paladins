@@ -7,6 +7,10 @@ const userSchema = mongoose.Schema({
   email: String,
   password: String,
   profileImage: String,
+  cart: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'product'
+  }],
   number: Number,
   purchases: {
     type:Array,
