@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/product.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
     <div id="main">
         <div id="nav">
-            <div id="logo">logo</div>
+            <div id="logo"><img src="/images/assets/logo.png" alt=""></div>
             <div id="right">
-                <a href="#">Home</a><a href="/cart/<%= user %>">Cart</a><a href="#">Bot</a><a href="">Logout</a>
+                <a href="/home">Home</a><a href="/cart/<%= user %>">Cart</a><a href="/bot">Bot</a><a href="/logout" id="logout">Logout</a>
             </div>
         </div>
         <div id="page1">
@@ -21,14 +22,24 @@
             <div id="products">
     <% products.forEach((e)=>{ %>
                 <div class="product">
-                    <div class="image"></div>
+                    <div class="image">
+                        <img src="/images/uploads/<%= e.productImage %>" alt="">
+                    </div>
                     <div class="data">
-                        <h3>e.title</h3>
-                        <h3>e.price</h3>
-                        <h3>e.brand</h3>
-                        <a href="/product/<%= e._id %>">see more</a>
-                        <a href="#" class="add-to-cart" data-productid="<%= e._id %>">Add to Cart</a>
-                        <a href="#" class="remove-from-cart" data-productid="<%= e._id %>">Remove from Cart</a>
+                        <div id="upper">
+                            <h3><%=e.title %></h3>
+                            <h3>&#8377; <%=e.price %></h3>
+                        </div>
+                        <div id="brand">
+                                                    <h3><%=e.brand %></h3>
+                        </div>
+                        <div id="icons">
+                            <a href="#" class="add-to-cart" data-productid="<%= e._id %>"><i class="ri-shopping-cart-fill"></i> Add to cart</a>
+                            <a href="#" class="remove-from-cart" data-productid="<%= e._id %>"><i class="ri-close-circle-fill"></i> Remove from cart</a>
+                        </div>
+                        <div id="seemore">
+                            <a href="/product/<%= e._id %>"><i class="ri-arrow-right-circle-line"></i></a>
+                        </div>
 
                     </div>
                 </div>

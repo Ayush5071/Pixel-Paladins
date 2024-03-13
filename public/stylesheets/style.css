@@ -2,141 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 html,body{
-  height: 100%;
   width: 100%;
-}
-#main{
-  position: relative;
-  overflow: hidden;
-
-}
-#page1{
-  height: 100vh;
-  width: 100vw;
-  background-color: antiquewhite;
-  position: relative;
-
-}
-.bg{
-  object-fit: cover;
   height: 100%;
-  width: 100%;
-}
-nav{
-  width: 100%;
-  height: 100px;
-  /* background-color: aqua; */
-  /* position: absolute; */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 16px;
-  position: sticky;
-  z-index: 9;
-  background-color: rgba(11, 11, 11);
-}
-nav img{
-  height: 100%;
-}
-/* #page1>#right-nav{} */
-#right-nav a{
-  padding: 10px 30px;
-  border-radius: 50px;
-  border: 1.6px solid #fff;
-  color: white;
-  background-color: transparent;
-  text-decoration: none;
-
-}
-#right-nav i{
-  padding: 10px 15px;
-  border-radius: 50px;
-  border: 1.6px solid #fff;
-  color: white;
-  background-color: transparent;
-}
-#bottom{
-  position: absolute;
-  bottom: 24%;
-  left: 8%;
-
-}
-#bottom h1{
-  font-size: 5vw;
-  font-weight: 600;
-}
-#bottom p{
-  font-size: 1.2vw;
-}
-#bottom-bottom{
-  display: flex;
-  gap: 3vw;
-  margin-top: 1rem;
-}
-#bottom-bottom button{
-  padding: 0.5rem 1rem;
-  font-size: 1.15rem;
-  border: none;
-  border-radius: 50px;
-  color: #0b48ed;
-  background-color: white;
-}
-/* PAGE - 2 */
-#page2{
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  /* background-color: #0942e3; */
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  flex-direction: column;
-  /* padding: 0 5vw; */
-  overflow: hidden;
-}
-#page2 h2{
-  font-size: 1.2vw;
-  font-weight: 300;
-  margin-bottom: 2vw;
-  color: white;
-  position: absolute;
-}
-#page2 h1{
-  font-size: 2.5vw;
-  font-weight: 900;
-  line-height: 1.18;
-  color: #dadada69;
-  width: 70%;
-  position: absolute;
-}
-#page3{
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  background-color: lightcoral;
-}
-#page3>canvas{
-  max-height: 100vh;
-  max-width: 100vw;
-  
-}
-/* CODING FOR BUYER-LOGIN  */
-#page-f{
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(23, 28, 26);
-
-}
-#formcontainer{
-  height: 86.4vh;
-  width: 100vw;
-  position: relative;
+  background-color: black;
+  overflow-x: hidden;
 }
 
 /* form styling  */
@@ -185,4 +57,28 @@ form input{
   font-size: 1.3vw;
   font-weight: 700;
   margin: 14px auto;
+}
+form a{
+  margin: 15px auto;
+  color: rgb(82, 81, 81);
+  position: relative;
+  font-weight: 100;
+  font-size: large;
+  text-decoration: none;
+
+}
+.cartImage{
+  width: 15vw;
+  height: 15vw;
+  object-fit: cover;
+  overflow: hidden;
+  position: relative;
+  top: -30px;
+  border: 2px solid whitesmoke ;
+}
+.cartImage img{
+  transition: all ease 1s;
+}
+.cartImage:hover img{
+  transform: scale(1.1);
 }

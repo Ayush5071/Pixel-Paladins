@@ -1,0 +1,457 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  overflow-x: hidden;
+}
+
+#main{
+    position: relative;
+    z-index: 10;
+    /* background-color: black; */
+  }
+#page1{
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-color: #ede4d7;
+    padding: 0 2vw;
+  }
+  #nav{
+    width: 100%;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.7rem 0 0rem;
+  
+  }
+  #nav img{
+    height: 150px;
+  
+  }
+  #container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1.5vw;
+  
+  }
+  #container h3{
+    padding: 10px 24px;
+    border: 1px solid #8a8a8a89;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.69);
+    border-radius: 52px;
+    font-size: 19px;
+    position: relative;
+    overflow: hidden;
+  }
+  #container h3::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    left: 0;
+    bottom: -100%;
+    border-radius: 50%;
+    transition: all ease 0.4s;
+  }
+  #container h3:hover::after{
+    bottom: 0;
+    border-radius: 0;
+  }
+  #container h3 a{
+    text-decoration: none;
+    color: #000000bb;
+    z-index: 9;
+    position: relative;
+  }
+  #container h3:hover a{
+    color: white;
+  
+  }
+  #center{
+    height: 65vh;
+    width: 100%;
+    /* position: relative; */
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid #0000003c;
+    padding-bottom: 2.5vw;
+  
+  }
+  #left h3{
+     width: 25vw;
+     font-size: 1.8vw;
+     line-height: 1.8vw;
+  }
+  #right h1{
+    font-size: 10vw;
+    line-height: 8vw;
+    text-align: right;
+  }
+  #page1 #badi-img{
+    width: 100%;
+    border-radius: 30px;
+    margin-top: 4vw;
+    position: relative;
+  }
+  #shape{
+    position: absolute;
+    height: 38vw;
+    width: 38vw;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    right: 0;
+    top: 70vh;
+    filter: blur(20px);
+  }
+  #shape1{
+    background-color: #FE320A;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    filter: blur(10px);
+    position: absolute;
+  
+  }
+  #shape2{
+    background: linear-gradient(#FE320A, #fe3f0a);
+  
+    height: 30vw;
+    width: 30vw;
+    border-radius: 50%;
+    position: absolute;
+    animation-name: anime2;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    filter: blur(25px);
+  }
+  #shape3{
+    background: linear-gradient(#FE320A, #fe3f0a);
+    height: 30vw;
+    position: absolute;
+    width: 30vw;
+    border-radius: 50%;
+    filter: blur(25px);
+    animation-name: anime1;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  #hero-3 {
+    background: linear-gradient(#FE320A, #fe3f0a);
+    height: 30vw;
+    position: absolute;
+    width: 30vw;
+    border-radius: 50%;
+    filter: blur(25px);
+    animation-name: anime1;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes anime1 {
+    from {
+        transform: translate(55%, -3%);
+    }
+  
+    to {
+        transform: translate(0%, 10%);
+    }
+  }
+  
+  @keyframes anime2 {
+    from {
+        transform: translate(5%, -5%);
+    }
+  
+    to {
+        transform: translate(-20%, 30%);
+    }
+  }
+  #moving-text{
+    position: relative;
+    white-space: nowrap;
+    /* to add scrolling effect in x-direction */
+    overflow-x: auto;
+  }
+  /* to remove scroll bar from below the scrolling div ("moving-text)*/
+  #moving-text::-webkit-scrollbar{
+    display: none;
+  }
+  /* animating the scrolling effect */
+  @keyframes move{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+  }
+  #page2{
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    background-color:  #ede4d7;
+  
+  }#moving-text h1{
+    font-size: 7vw;
+    display: inline-block;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  .gola{
+    height: 3vw;
+    width: 3vw;
+    border-radius: 50%;
+    background-color: #FE320A;
+    display: inline-block;
+    margin: 1vw 1.3vw;
+  }
+  .con{
+    /* JO CHILDRENS AGLI LINE ME ATE HAI WO EK HI SAM ELINE ME AA JAYENGE  */
+    white-space: nowrap;
+    display: inline-block;
+    animation: move ;
+    animation-duration: 14s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  #page2-bottom{
+    height: 80vh;
+    width: 100%;
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3vw 4vw;
+  }
+  #page2-bottom h1{
+    font-size: 3vw;
+    line-height: 3vw;
+    width: 55%;
+    padding: 4vw;
+    position: relative;
+    z-index: 5;
+  
+  }
+  #bottom-bottom{
+    width: 18%;
+  }
+  #bottom-bottom img{
+    width: 100%;
+    border-radius: 19px;
+  
+  }
+  #bottom-bottom p{
+    font-weight: 300;
+    font-size: 0.8vw;
+  }
+  #gooey{
+    height: 25vw;
+    width: 25vw;
+    position: absolute;
+    background:linear-gradient(to top,#ff2d03,#ff5c0b);
+    border-radius: 50%;
+    top: 55%;
+    left: 29%;
+    filter: blur(27px);
+    animation: gooey;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes gooey{
+    from{
+        transform: translate(10%,-10%) skew(0);
+    }
+    to{
+        transform: translate(-10%,10%) skew(-12deg);
+    }
+  }
+  #page3{
+    min-height: 90vh;
+    width: 100vw;
+    background-color:  #ede4d7;
+    padding: 6vw 0;
+    /* background-color: lightblue; */
+  }
+  .elem{
+    height: 80px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-top: 1px solid black;
+  }
+  .elem h2{
+    font-size: 3vw;
+    padding: 0 2vw;
+    z-index: 3;
+  }
+  .overlay{
+    height: 100%;
+    width: 100%;
+    background-color: orangered;
+    position: absolute;
+    top: -100%;
+    transition: all ease 0.24s;
+  }
+  .elem:hover .overlay{
+    top: 0;
+  }
+  #fixed-image{
+    height: 29vw;
+    width: 22vw;
+    position: fixed;
+    border-radius: 8px;
+    background-color: red;
+    z-index: 99;
+    top: 25%;
+    left: 50%;
+    display: none;
+    background-size: cover;
+    background-position: center;
+  }
+  #page4{
+    height: 60vh;
+    width: 100%;
+    background-color: #ede4d7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 30px;
+  
+  }
+  #page5{
+    height: 50vh;
+    width: 100%;
+    /* background-color: aqua; */
+  }
+  #footer{
+    /* fixed matlab absolute  */
+    position: fixed;
+    z-index: 9;
+    bottom: 0;
+    height: 110vh;
+    width: 100vw;
+    color: white;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 5vw 0;
+  }
+  #footer h1{
+    font-size: 19vw;
+  }
+  #footer-div{
+    height: 170vh;
+    width: 111vw;
+    background-color: red;
+    filter: blur(122px);
+    animation-name: foot;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes foot{
+    from{
+        transform: translateY(-10%) skew(0);
+    }
+    to{
+        transform: translateY(50%) skew(34deg) ;
+    }
+  }
+  #footer-bottom{
+    height: 7vh;
+    border-top: 1px solid #bababa;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  #footer-bottom p{
+    font-size: 1.2rem;
+  }
+  .elemo{
+    height: 60%;
+    width: 30%;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+  }
+  .elemo h2{
+    width: 100%;
+    height: 100%;
+    background-color:#FE320A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ede4d7;
+    position: absolute;
+    z-index: 10;
+    transition: all ease 0.5s;
+    
+  }
+  .elemo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scale: 1.2;
+    transition: all ease 0.5s;
+    /* position: absolute; */
+  }
+  .elemo:hover h2{
+    background-color: transparent;
+  }
+  .elemo:hover img{
+    scale: 1;}
+  
+  
+  /* CODING FOR BUYER-LOGIN  */
+  #page-f{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(23, 28, 26);
+  
+  }
+  #formcontainer{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  

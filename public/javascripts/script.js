@@ -1,3 +1,4 @@
+
 gsap.registerPlugin(ScrollTrigger);
 
 // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
@@ -26,21 +27,23 @@ ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
 ScrollTrigger.refresh();
  //text ko highlight krne wala code 
-var clutter ="";
-document.querySelector("#page2>h1").textContent.split(" ").forEach(function(dets){
-    clutter += `<span> ${dets} </span>`
-    document.querySelector("#page2>h1").innerHTML =  clutter;
+// const scroll = new LocomotiveScroll({
+//   el: document.querySelector('#main'),
+//   smooth: true
+// });
+var elemc = document.querySelector("#elem-container")
+var image = document.querySelector("#fixed-image")
+elemc.addEventListener("mouseenter",function(){
+ image.style.display = "block"
 })
-gsap.to("#page2>h1>span",{
-    ScrollTrigger:{
-        trigger:'#page2>h1>span',
-        start:'top bottom', //phli value element ke liye then screen ke liye
-        end: "bottom top",
-        scroller:"body",
-        scrub:.9,
-        markers:true
-    },
-    // duration:1,
-    stagger:.1,
-    color:"#fff"
+elemc.addEventListener("mouseleave",function(){
+  image.style.display = "none"
+})
+
+var elems = document.querySelectorAll(".elem")
+elems.forEach(function(e){
+    e.addEventListener("mouseenter",function(){
+      var image1 = e.getAttribute("data-image")
+      image.style.backgroundImage = `url(${image1})`
+    })
 })
