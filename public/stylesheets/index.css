@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #F5F5F5;
   font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 html,body{
@@ -20,20 +21,25 @@ html,body{
     min-height: 100vh;
     width: 100vw;
     position: relative;
-    background-color: #ede4d7;
     padding: 0 2vw;
+    color: white;
   }
   #nav{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 999;
     width: 100%;
-    height: 140px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 1.7rem 0 0rem;
-  
+    background-color: #020301;
+    padding-left: 3.5vw;
   }
   #nav img{
-    height: 150px;
+    height: 100px;
   
   }
   #container{
@@ -47,7 +53,6 @@ html,body{
     padding: 10px 24px;
     border: 1px solid #8a8a8a89;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.69);
     border-radius: 52px;
     font-size: 19px;
     position: relative;
@@ -58,7 +63,8 @@ html,body{
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: black;
+    color: black;
+    background-color: #FAD02C;
     left: 0;
     bottom: -100%;
     border-radius: 50%;
@@ -70,12 +76,12 @@ html,body{
   }
   #container h3 a{
     text-decoration: none;
-    color: #000000bb;
+    color: white;
     z-index: 9;
     position: relative;
   }
   #container h3:hover a{
-    color: white;
+    color: black;
   
   }
   #center{
@@ -89,102 +95,20 @@ html,body{
     padding-bottom: 2.5vw;
   
   }
+
+  #left h1{
+    font-size: 6.5vw;
+    line-height: 8vw;
+    color: #ffcc00;
+  }
   #left h3{
-     width: 25vw;
+    margin-top: 5vw;
+     width: 35vw;
      font-size: 1.8vw;
      line-height: 1.8vw;
+     margin-bottom: 4.5vw;
   }
-  #right h1{
-    font-size: 10vw;
-    line-height: 8vw;
-    text-align: right;
-  }
-  #page1 #badi-img{
-    width: 100%;
-    border-radius: 30px;
-    margin-top: 4vw;
-    position: relative;
-  }
-  #shape{
-    position: absolute;
-    height: 38vw;
-    width: 38vw;
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
-    right: 0;
-    top: 70vh;
-    filter: blur(20px);
-  }
-  #shape1{
-    background-color: #FE320A;
-    height: 100%;
-    width: 100%;
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
-    filter: blur(10px);
-    position: absolute;
-  
-  }
-  #shape2{
-    background: linear-gradient(#FE320A, #fe3f0a);
-  
-    height: 30vw;
-    width: 30vw;
-    border-radius: 50%;
-    position: absolute;
-    animation-name: anime2;
-    animation-duration: 5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    filter: blur(25px);
-  }
-  #shape3{
-    background: linear-gradient(#FE320A, #fe3f0a);
-    height: 30vw;
-    position: absolute;
-    width: 30vw;
-    border-radius: 50%;
-    filter: blur(25px);
-    animation-name: anime1;
-    animation-duration: 5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-  }
-  #hero-3 {
-    background: linear-gradient(#FE320A, #fe3f0a);
-    height: 30vw;
-    position: absolute;
-    width: 30vw;
-    border-radius: 50%;
-    filter: blur(25px);
-    animation-name: anime1;
-    animation-duration: 5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-  }
-  
-  @keyframes anime1 {
-    from {
-        transform: translate(55%, -3%);
-    }
-  
-    to {
-        transform: translate(0%, 10%);
-    }
-  }
-  
-  @keyframes anime2 {
-    from {
-        transform: translate(5%, -5%);
-    }
-  
-    to {
-        transform: translate(-20%, 30%);
-    }
-  }
+
   #moving-text{
     position: relative;
     white-space: nowrap;
@@ -208,20 +132,19 @@ html,body{
     width: 100vw;
     min-height: 100vh;
     position: relative;
-    background-color:  #ede4d7;
   
   }#moving-text h1{
-    font-size: 7vw;
+    font-size: 5vw;
     display: inline-block;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   .gola{
-    height: 3vw;
-    width: 3vw;
+    height: 2vw;
+    width: 2vw;
     border-radius: 50%;
-    background-color: #FE320A;
+    background-color: #FAD02C;
     display: inline-block;
-    margin: 1vw 1.3vw;
+    margin: 0.5vw 1.3vw;
   }
   .con{
     /* JO CHILDRENS AGLI LINE ME ATE HAI WO EK HI SAM ELINE ME AA JAYENGE  */
@@ -239,13 +162,13 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 3vw 4vw;
+    padding: 3vw 2vw;
   }
   #page2-bottom h1{
-    font-size: 3vw;
+    font-size: 2.5vw;
     line-height: 3vw;
     width: 55%;
-    padding: 4vw;
+    padding: 2vw;
     position: relative;
     z-index: 5;
   
@@ -262,34 +185,10 @@ html,body{
     font-weight: 300;
     font-size: 0.8vw;
   }
-  #gooey{
-    height: 25vw;
-    width: 25vw;
-    position: absolute;
-    background:linear-gradient(to top,#ff2d03,#ff5c0b);
-    border-radius: 50%;
-    top: 55%;
-    left: 29%;
-    filter: blur(27px);
-    animation: gooey;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-  }
-  
-  @keyframes gooey{
-    from{
-        transform: translate(10%,-10%) skew(0);
-    }
-    to{
-        transform: translate(-10%,10%) skew(-12deg);
-    }
-  }
+
   #page3{
     min-height: 90vh;
     width: 100vw;
-    background-color:  #ede4d7;
     padding: 6vw 0;
     /* background-color: lightblue; */
   }
@@ -310,7 +209,7 @@ html,body{
   .overlay{
     height: 100%;
     width: 100%;
-    background-color: orangered;
+    background-color: #FAD02C;
     position: absolute;
     top: -100%;
     transition: all ease 0.24s;
@@ -323,7 +222,7 @@ html,body{
     width: 22vw;
     position: fixed;
     border-radius: 8px;
-    background-color: red;
+    background-color: #FAD02C;
     z-index: 99;
     top: 25%;
     left: 50%;
@@ -334,7 +233,6 @@ html,body{
   #page4{
     height: 60vh;
     width: 100%;
-    background-color: #ede4d7;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -345,10 +243,10 @@ html,body{
   #page5{
     height: 50vh;
     width: 100%;
+    background-color: black;
     /* background-color: aqua; */
   }
-  #footer{
-    /* fixed matlab absolute  */
+  /*#footer{
     position: fixed;
     z-index: 9;
     bottom: 0;
@@ -368,7 +266,7 @@ html,body{
   #footer-div{
     height: 170vh;
     width: 111vw;
-    background-color: red;
+    background-color: #FAD02C;
     filter: blur(122px);
     animation-name: foot;
     animation-duration: 6s;
@@ -395,7 +293,7 @@ html,body{
   }
   #footer-bottom p{
     font-size: 1.2rem;
-  }
+  }*/
   .elemo{
     height: 60%;
     width: 30%;
@@ -406,14 +304,14 @@ html,body{
   .elemo h2{
     width: 100%;
     height: 100%;
-    background-color:#FE320A;
+    background-color: #FAD02C;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 45px;
     font-weight: 800;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #ede4d7;
+    color: black;
     position: absolute;
     z-index: 10;
     transition: all ease 0.5s;
@@ -454,4 +352,90 @@ html,body{
     justify-content: center;
 
   }
-  
+  body {
+    height: 100%;
+    width: 100%;
+    background-image: url("/images/assets/back1.jpg");
+    background-size: cover;
+    background-position: center 100px;
+}
+
+
+footer {
+  height: 50vh;
+  width: 100%;
+  background-color: black;
+  color: #fff;
+  padding: 4vh 5vw 0 5vw;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-evenly ;
+}
+
+.footer-section {
+  flex: 1;
+}
+
+.footer-section h4 {
+  font-size: 2vw; 
+  margin-bottom: 3vh; 
+}
+
+.footer-section p {
+  margin: 0.5vh 0; 
+  font-size: 1.3vw;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5vh; 
+}
+
+.social-links {
+  display: flex;
+  padding: 0;
+}
+
+.social-links li {
+  margin-right: 2vw;
+}
+
+.social-links li:last-child {
+  margin-right: 0;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #fff; 
+  font-size: 1.5vw; 
+  border: 1px solid #fff; 
+  border-radius: 50%; 
+  width: 3vw; 
+  height: 3vw;
+  display: inline-flex; 
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s, border-width 0.3s; 
+}
+
+.social-links a:hover {
+  transform: scale(1.1); 
+  border-width: 2.5px; 
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 3.3vh;
+  font-size: 1.2vw;
+}
+
+#team a{
+  text-decoration: none;
+  font-size: 1.3vw;
+}
