@@ -7,10 +7,20 @@
   <link rel="stylesheet" href="/stylesheets/bot.css">
 </head>
 <body>
-  <div id="chatbot-container">
-    <div id="chat-messages"></div>
-    <input type="text" id="user-input" placeholder="Type your message...">
-    <button id="send-btn">Send</button>
+  <div id="nav">
+    <div id="logo"><img src="/images/assets/logo.png" alt=""></div>
+    <div id="right">
+        <a href="/home">Home</a><a href="/cart">Cart</a><a href="/bot">Bot</a><a href="/logout" id="logout">Logout</a>
+    </div>
+</div>
+  <div id="container">
+    <div id="chatbot-container">
+      <div id="chat-messages"></div>
+      <div id="userInput">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
   </div>
 
   <script src="/javascripts/bot.js"></script>

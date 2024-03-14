@@ -3,17 +3,75 @@ body {
     margin: 0;
     padding: 0;
   }
+  #container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-color: #393939;
+  }
+  *{
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+    box-sizing: border-box;
+    font-family: 'montserrat';
+
+}
+#nav{
+    width: 100vw;
+    height: 16vh;
+    background-color: #393939;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vw 2vw;
+    position: absolute;
+    z-index: 10;
+}
+#nav a {
+    text-decoration: none;
+    font-size: 1.5vw;
+    border: 1px solid black;
+    padding: 0.5vw 1vw;
+    border-radius: 50px;
+}
+#nav #logo{
+    height: 8vw;
+    width: 8vw;
+    /* background-color: black; */
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+
+}
+#nav img{
+    height: 100%;
+    width: 100%;
+
+}
+#nav #right{
+    display: flex;
+    width: 25vw;
+    justify-content: space-evenly;
+    align-items: center;
+}
   
   #chatbot-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+    width: 40vw;
+    height: 60vh;
+    /* margin: 50px auto; */
+    padding: 18px 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    position: relative;
+    background-color: #514e4e;
   }
   
   #chat-messages {
-    height: 200px;
+    height: 88%;
     overflow-y: auto;
     margin-bottom: 10px;
   }
@@ -25,22 +83,36 @@ body {
   }
   
   .user {
-    background-color: #e5f3ff;
+    background-color: lightblue;
   }
   
   .bot {
-    background-color: #f0f0f0;
+    background-color: lightcoral;
+  }
+  #userInput{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* padding: 5px 10px; */
+    gap: 2%;
+    margin: 2px 0px;
+    align-items: center;
+    justify-content: space-evenly;
+    color: lightcoral;
   }
   
   #user-input {
-    width: calc(100% - 70px);
-    margin-right: 10px;
+    width: 80%;
     padding: 8px;
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
   }
   
   #send-btn {
     padding: 8px 15px;
-    background-color: #007bff;
+    background-color: rgb(221, 55, 55);
     color: #fff;
     border: none;
     border-radius: 5px;
