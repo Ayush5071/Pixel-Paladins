@@ -75,7 +75,7 @@ router.post("/add-to-cart/:productId",isLoggedIn,async (req,res)=>{
 
 //code for cart 
 
-router.get("/cart/:username",async (req,res)=>{
+router.get("/cart/:username",isLoggedIn,async (req,res)=>{
     const username = req.params.username;
     console.log(username)
     const user = await userModel.findOne({username:username}).populate('cart');
@@ -94,25 +94,19 @@ router.get("/cart/:username",async (req,res)=>{
 //     console.log("removed");
 //     res.status(200)
 // })
+router.delete("/removefromcart/:productId", async (req, res) => {
+    const productId = req.params.productId;
+    const username = req.session.username;
 
-router.delete("/remove-from-cart/:productId", isLoggedIn, async (req, res) => {
     try {
-        const productId = req.params.productId;
-        const username = req.session.passport.user;
-        // Find the user by username
-        const user = await userModel.findOne({ username: username });
-        if (!user) {
-            // Handle case where user is not found
-            return res.status(404).json({ message: "User not found" });
-        }
-        // Remove productId from the user's cart
-        user.cart.pull(productId);
-        await user.save();
-        console.log("removed");
-        res.sendStatus(200); // Sending a 200 status code
+        await userModel.updateOne(
+            { username: username },
+            { $pull: { cart: productId } }
+        );
+        res.sendStatus(204); // Send a success response
     } catch (error) {
-        console.error('Error removing product from cart:', error.message);
-        res.status(500).json({ message: "Internal Server Error" });
+        console.error('Error removing item from cart:', error);
+        res.sendStatus(500); // Send an error response
     }
 });
 

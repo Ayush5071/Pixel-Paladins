@@ -7,13 +7,56 @@
 html,body{
   width: 100%;
   height: 100%;
-  background-color: black;
+  background:linear-gradient(to top right,rgb(0, 0, 0),rgb(117, 114, 114),rgb(16, 17, 17));
   overflow-x: hidden;
+}
+
+#nav{
+  padding: 8px 16px;
+  height: 12vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+  /* background-color: aliceblue; */
+  /* position: absolute; */
+}
+#nav #img{
+  width: 11vw;
+  height: 11vw;
+  overflow: hidden;
+  object-fit: cover;
+  position: relative;
+  top: 20px;
+}
+
+#nav #righty{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+  gap: 10px;
+
+}
+#nav a{
+  text-decoration: none;
+  padding: 10px 19px;
+  border: 1px solid white;
+  color: white;
+  border-radius: 50px;
+
+
+}
+#nav img{
+  height: 100%;
+  width: 100%;
 }
 
 /* form styling  */
 #form{
-  background-color: rgb(19, 19, 19) ;
+  background-color: rgb(30, 29, 29) ;
   border: 2px solid white;
   border-radius: 50px;
   color: white;
@@ -23,6 +66,14 @@ html,body{
   /* height: ; */
   width: 50vh;
   padding: 4vh 2.5vh;
+}
+#formcontainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 }
 form{
 
