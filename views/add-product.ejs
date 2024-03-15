@@ -22,16 +22,31 @@
 <div class="h-full w-screen flex bg-zinc-800 justify-center items-center ">
 
     <div id="outer-cr" class="rounded-2xl bg-zinc-800 px-10 py-10 text-white border-2 border-zinc-300">
-        <h1 class="text-xl">Create a new post.</h1>
+        <h1 class="text-xl">Add A New Item</h1>
         <hr class="opacity-10 mt-3">
         <div class="">
             <form action="/setproduct" method="post" enctype="multipart/form-data">
                 <input type="file" name="productImage" id="" class="block w-full text-black px-3 py-2 mt-2">
                 <input type="text" name="title" id="" class="block w-full px-3 text-black py-2 mt-2 rounded-lg" placeholder="Title">
-                <input type="number" name="price" id="" class="block w-full px-3 text-black py-2 mt-2 rounded-lg" placeholder="Title">
-                <textarea type="text" name="brand" id="" class="block text-black w-full px-3 py-2 mt-2 h-40 rounded-lg" placeholder="Description"></textarea>
+                <input type="number" name="price" id="" class="block w-full px-3 text-black py-2 mt-2 rounded-lg" placeholder="Price in Rs">
+                <input type="text" name="brand" id="" class="block w-full px-3 text-black py-2 mt-2 rounded-lg" placeholder="Merchants Company">
+                <select class="block w-full px-3 text-black py-2 mt-2 rounded-lg" name="type" id="">
+                    <option value="" selected disabled>Select a Category</option>
+                    <option value="potion">POTIONS</option>
+                    <option value="wand">WANDS</option>
+                    <option value="armor">ARMOR</option>
+                    <option value="magic stone">MAGIC STONES</option>
+                    <option value="spell books">SPELL BOOKS</option>
+                    <option value="familiars">FAMILIARS</option>
+                    <option value="mounts">MOUNTS</option>
+                    <option value="magic scroll">MAGIC SCROLLS</option>
+                    <option value="magic scroll">FLYING EQUIPMENTS</option>
+                </select>
+
+                <textarea type="text" name="description" id="" class="block text-black w-full px-3 py-2 mt-2 h-40 rounded-lg" placeholder="Description"></textarea>
                 <input type="submit" value="Create Product" class="block w-full text-black px-3 py-2 mt-2 bg-red-700 rounded-full">
             </form>
+            <a class="block w-full text-black text-xl px-3 py-2 mt-2 bg-pink-300 rounded-full flex place-content-center" href="/sprofile">Profile</a>
         </div>
     
     </div>

@@ -25,12 +25,24 @@ html,body{
 
 }
 .nav img{
-    height: 50px;
+    height: 100px;
+
+}
+.nav #profile{
+    height: 100px;
+    position: absolute;
+    left: 92%;
 
 }
 .nav h4{
    text-transform: uppercase;
    font-weight: 500;
+}
+.nav h4 a{
+    text-decoration: none;
+    padding: 10px 19px;
+    border: 1px solid black;
+    border-radius: 19px;
 }
 #page1 #arrow{
     width: 150px;
@@ -53,7 +65,7 @@ html,body{
 }
 #arrow:hover{
     scale: 0.6;
-    background-color: #95c11E;
+    background-color: #efc20d;
 
 }
 video{
@@ -80,12 +92,12 @@ video{
 }
 /* pseudo elements is used to write or implement something using css */
 #page1 h1::before{
-        content: "PET.BOND.PLAY.";
+        content: "RUNE.GIFT.FEAT";
         position: absolute; /* h1 me jo likha tha uske upar hi ja ke baith gya */
         color: black;
         top: -5px;
         left: -5px;
-        -webkit-text-stroke: 1px #95c11e;/* only 2 properties color and width*/
+        -webkit-text-stroke: 1px #efc20d;/* only 2 properties color and width*/
         z-index: -1;
 }
 #page1 h1{
@@ -111,7 +123,7 @@ video{
 #cursor{
     height: 20px;
     width: 20px;
-    background-color: #95c11E;
+    background-color: #efc20d;
     border-radius: 50%;
     position: fixed;
     z-index: 111;
@@ -154,11 +166,11 @@ video{
     font-weight: 900;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-right: 40px;
-    -webkit-text-stroke: 2px #95c11E; /* it gives a boundary on only above part of the letter ,it is not same as border ,its different*/
+    -webkit-text-stroke: 2px #efc20d; /* it gives a boundary on only above part of the letter ,it is not same as border ,its different*/
     transition: all 0.3s;
 }
 #scroller h4:hover{
-    color: #95c11E;
+    color: #efc20d;
     font-size: 85px;
 }
 .scroller-in{
@@ -182,7 +194,7 @@ video{
     height: 220px;
     border-radius: 20px;
     object-fit: cover;
-    border: 2px solid #95c11E;
+    border: 2px solid #efc20d;
 }
 #about-us #about-us-in {
     text-align: center;
@@ -216,7 +228,7 @@ video{
     border-radius: 30px;
     background-size: cover;
     background-position: center;
-    border: 2px solid #95c11E;
+    border: 2px solid #efc20d;
     /* jo kuch bhi cards se bahar ja rha hai usko hidden krdo from next line it is done through overflow hidden attribute */
     overflow: hidden;
     transition: all 0.3s ease;
@@ -233,7 +245,7 @@ video{
 .overlay{
     height: 100%;
     width: 100%;
-    background-color: #95c11E;
+    background-color: #efc20d;
     padding-top: 70px;
     padding: 25px;
     opacity: 0;
@@ -334,7 +346,7 @@ video{
 .elem h2{
     width: 100%;
     height: 100%;
-    background-color: #95c11E;
+    background-color: #efc20d;
     display: flex;
     align-items: center;
     justify-content: center;

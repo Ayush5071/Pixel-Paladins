@@ -19,6 +19,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div style="background-color: rgb(39 39 42); position: absolute;" id="nav">
+        <div id="img">
+            <img src="/images/assets/logo.png" alt="">
+        </div>
+        <div id="righty">
+            <a href="/s-Orders">Orders</a>
+            <!-- <a href="/s-products">Your Products</a> -->
+            <a href="/">Logout</a>
+        </div>
+    </div>
 <div class="profile w-full min-h-screen bg-zinc-800 text-white pt-1 ">
     <form id="uploadform" hidden action="/seller-p-image-upload" method="post" enctype="multipart/form-data">
         <input type="file" name="simage">
@@ -33,13 +43,40 @@
                     <img src="/images/uploads/<%= seller.profileImage %>" class="w-full h-full object-cover">
                 </div>
             </div>
-            <h1 class="text-3xl font-semibold mt-2"><%= seller.brandname %></h1>
-            <h3 class="text-3xl font-semibold mt-2"><%= seller.email %></h3>
-            <h3 class="text-md">&commat;<%= seller.username %></h3>
-            <a href="/edit" class="px-7 py-2 bg-zinc-900 rounded-full text-xs font-semibold mt-2">Edit</a>
+            <h1 class="text-3xl font-semibold mt-1"><%= seller.brandname %></h1>
+            <h3 class="text-md">Owner : <%= seller.username %></h3>
+            <h3 class="text-md">Username : &commat;<%= seller.username %></h3>
+            <h3 class="text-md">Mail : <%= seller.email %></h3>
+            <h3 class="text-md font-bold">Products : <%= seller.products.length %></h3>
+
+            <!-- <a href="/edit" class="px-7 py-2 bg-zinc-900 rounded-full text-xs font-semibold mt-2">Edit</a> -->
             <a href="/addproduct?username=<%= seller.username %>" class="px-10 py-2 rounded-lg bg-red-600 text-xs font-semibold mt-5">Add New product</a>
         </div>
     </div>
+    <div id="products">
+        <% seller.products.forEach((e)=>{ %>
+                    <div class="product">
+                        <div class="image">
+                            <img src="/images/uploads/<%= e.productImage %>" alt="">
+                        </div>
+                        <div class="data">
+                            <div id="upper">
+                                <h3><%=e.title %></h3>
+                                <h3>&#8377; <%=e.price %></h3>
+                            </div>
+                            <div id="brand">
+                                                        <h3><%=e.brand %></h3>
+                                                        <h3><%=e.types %></h3>
+                                                        <h3><%=e.likes %></h3>
+                                                    </div>
+                                                    <h3><%=e.purchases %></h3>
+
+    
+    
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
 </div>
 <script>
     document.querySelector('#uploadicon').addEventListener("click",()=>{

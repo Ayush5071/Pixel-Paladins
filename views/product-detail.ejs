@@ -4,14 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/productdetails.css">
 </head>
 <body>
-    here is the detail of that product is present 
-    <%= product._id %> <br>
-    <%= product.brand %> <br>
-    <%= product.title %> <br>
-    <%= product.price %> <br>
-    <%= product.seller %> <br>
-    <%= product.reviews[0] %>  <br>
+    <div id="nav">
+        <div id="logo"><img src="/images/assets/logo.png" alt=""></div>
+        <div id="right">
+            <a href="/home">Home</a><a href="/product">Products</a><a href="/bot">Bot</a><a href="/logout" id="logout">Logout</a>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="upper">
+            <div id="left">
+                <div id="lup"><img src="/images/assets/ayush tiwari.jpeg" alt=""></div>
+                <div id="ldown">
+                    <a href="/place-order">ORDER NOW</a>
+                </div>
+            </div>
+            <div id="righty">
+                <h1>PRODUCT NAME</h1>
+                <div id="data">
+                    <div id="data-left">
+                        <h3>MERCHANT COMPANY :</h3>
+                        <h3>PRICE :</h3>
+                        <h3>TYPE :</h3>
+                        <h3>ANY OTHER :</h3>
+                        <h3>OTHER :</h3>
+                    </div>
+                    <div id="data-right">
+                        <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo autem dicta labore dolor sed? Neque ab, minima quasi ad obcaecati iure illo odit? Nesciunt aperiam eum recusandae voluptatum?
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+            <div id="bleft">
+                <h2>REVIEW PRODUCT : </h2>
+        </div>
+            <div id="form">
+                <form action="/review" method="post" enctype="multipart/form-data">
+                    <label for="reviews"></label>
+                    <textarea name="reviews" id="" cols="30" rows="7"></textarea>
+                    <label for="reviewImage"></label>
+                    <input type="file" name="reviewImage" id="">
+                </form>
+            </div>
+        </div>
+        <div id="reviews">
+            <h1>CUSTOMER'S REVIEW</h1>
+            <div id="review">
+                <div id="rleft"><img src="/images/assets/armour1.jpeg" alt=""></div>
+                <div id="rright">
+                    <div id="user">
+                        <div id="name">Ayush Tiwari</div>
+                        <div id="photo"><img src="/images/assets/ayush tiwari.jpeg" alt=""></div>
+                    </div>
+                    <div id="descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui amet autem temporibus atque. Odio nobis quidem quasi illum et architecto necessitatibus labore doloribus.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

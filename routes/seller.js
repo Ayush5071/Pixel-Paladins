@@ -8,12 +8,14 @@ const sellerSchema = new mongoose.Schema({
   email: String,
   password: String,
   profileImage:String,
-  products : {
-    type:Array,
-    default:[]
-  },
-  sales: Number,
-  brandrating: Number,
+  products : [{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Product"
+  }],
+  sales:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"user"
+  }],
   brandname:String
 
 });

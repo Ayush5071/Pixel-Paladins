@@ -13,9 +13,13 @@ const productSchema = new mongoose.Schema({
     title: { type: String, required: true },
     productImage: { type: String },
     purchases: { type: Number, default: 0 },
-    reviews: {
-        type:Array,
-        default:[]
+    reviews: [{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user"
+    }],
+    reviewImage:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user"
     },
     brand:String
 });

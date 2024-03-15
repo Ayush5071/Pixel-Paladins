@@ -35,7 +35,7 @@ html,body{
     align-items: center;
     justify-content: space-between;
     padding: 0 1.7rem 0 0rem;
-    background-color: #020301;
+    background-color: #111;
     padding-left: 3.5vw;
   }
   #nav img{
@@ -64,7 +64,7 @@ html,body{
     height: 100%;
     width: 100%;
     color: black;
-    background-color: #FAD02C;
+    background-color: #efc20d;
     left: 0;
     bottom: -100%;
     border-radius: 50%;
@@ -99,10 +99,10 @@ html,body{
   #left h1{
     font-size: 6.5vw;
     line-height: 8vw;
-    color: #ffcc00;
+    color: #efc20d;
   }
   #left h3{
-    margin-top: 5vw;
+    margin-top: 2vw;
      width: 35vw;
      font-size: 1.8vw;
      line-height: 1.8vw;
@@ -142,7 +142,7 @@ html,body{
     height: 2vw;
     width: 2vw;
     border-radius: 50%;
-    background-color: #FAD02C;
+    background-color: #efc20d;
     display: inline-block;
     margin: 0.5vw 1.3vw;
   }
@@ -209,7 +209,7 @@ html,body{
   .overlay{
     height: 100%;
     width: 100%;
-    background-color: #FAD02C;
+    background-color: #efc20d;
     position: absolute;
     top: -100%;
     transition: all ease 0.24s;
@@ -222,7 +222,7 @@ html,body{
     width: 22vw;
     position: fixed;
     border-radius: 8px;
-    background-color: #FAD02C;
+    background-color: #efc20d;
     z-index: 99;
     top: 25%;
     left: 50%;
@@ -266,7 +266,7 @@ html,body{
   #footer-div{
     height: 170vh;
     width: 111vw;
-    background-color: #FAD02C;
+    background-color: #efc20d;
     filter: blur(122px);
     animation-name: foot;
     animation-duration: 6s;
@@ -304,7 +304,7 @@ html,body{
   .elemo h2{
     width: 100%;
     height: 100%;
-    background-color: #FAD02C;
+    background-color: #efc20d;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -327,12 +327,13 @@ html,body{
   }
   .elemo:hover h2{
     background-color: transparent;
+    color: transparent;
   }
   .elemo:hover img{
-    scale: 1;}
+    scale: 1;
+  }
   
   
-  /* CODING FOR BUYER-LOGIN  */
   #page-f{
     height: 100%;
     width: 100%;

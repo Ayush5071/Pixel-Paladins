@@ -56,6 +56,11 @@
 </div>
 </div>
 <script>
+        document.querySelector('#uploadicon').addEventListener("click",()=>{
+        document.querySelector("#uploadform>input").click();    })
+    document.querySelector("#uploadform>input").addEventListener("change",()=>{
+        document.querySelector("#uploadform").submit();
+    })
     const username = "<%= user.username %>"
     function redirect(){
         window.location.href = `/cart/${username}`

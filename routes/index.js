@@ -44,7 +44,8 @@ router.get('/sprofile', async function(req, res) {
             return res.redirect('/slogin');
         }
 
-        const seller = await sellerModel.findOne({ username: username });
+        const seller = await sellerModel.findOne({ username: username }).populate('products');
+        console.log(seller);
 
         if (!seller) {
             // If seller not found, handle the case appropriately (e.g., redirect to login page)
@@ -71,7 +72,11 @@ router.post("/add-to-cart/:productId",isLoggedIn,async (req,res)=>{
     res.status(200)
 })
 
+//code for order
 
+router.get("/order",(req,res)=>{
+     res.render('order-form')
+})
 
 //code for cart 
 
@@ -159,7 +164,9 @@ router.get("/addproduct", async (req, res) => {
         // Handle the case where seller is not found
         return res.redirect("/sprofile"); // Redirect to sprofile or handle appropriately
     }
-    console.log(seller)
+    const product = await productModel.find({seller:seller._id})
+    // console.log(product)
+    // console.log(seller)
     // Render the add-product page and pass the seller data
     res.render('add-product', { seller: seller });
 });
@@ -211,7 +218,9 @@ router.get("/logout",function(req,res,next){
 router.get('/slogin', (req, res) => {
     res.render('slogin');
 });
-
+router.get("/team",(req,res)=>{
+    res.render("team")
+})
 router.post('/slogin', function(req, res, next) {
     passport.authenticate('seller-local', function(err, user, info) {
         if (err) {
@@ -289,6 +298,8 @@ router.post('/seller-p-image-upload',upload.single("simage"),async (req,res,next
     res.redirect('/sprofile');
   
   })
+
+
   router.post('/setproduct', upload.single('productImage'), async (req, res) => {
     // Check if username exists in the session
     if (!req.session.username) {
@@ -314,7 +325,9 @@ router.post('/seller-p-image-upload',upload.single("simage"),async (req,res,next
             price: req.body.price,
             title: req.body.title,
             brand: req.body.brand,
-            productImage: req.file.filename
+            productImage: req.file.filename,
+            description:req.body.description,
+            type:req.body.type
         });
 
         // Push the product's ID to the seller's products array
