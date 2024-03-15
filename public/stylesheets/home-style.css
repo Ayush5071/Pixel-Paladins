@@ -86,7 +86,7 @@ html,body{
 }
 /* pseudo elements is used to write or implement something using css */
 #page1 h1::before{
-        content: "PIXEL PALADINS";
+        content: "RUNE.GIFT.FEAT";
         position: absolute; /* h1 me jo likha tha uske upar hi ja ke baith gya */
         color: black;
         top: -5px;
@@ -117,7 +117,7 @@ html,body{
 #cursor{
     height: 20px;
     width: 20px;
-    background-color: #ffcc00;
+    background-color: #e3bc20;
     border-radius: 50%;
     position: fixed;
     z-index: 111;
@@ -125,11 +125,18 @@ html,body{
 #cursor-blur{
     height: 300px;
     width: 300px;
-    background-color: #C1960080;
+    background-color: #edd1327e;
     filter: blur(40px);
     border-radius: 50%;
     position: fixed;
     z-index: 9;
+}
+video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
 }
 #scroller{
     background-color: transparent;
@@ -272,29 +279,6 @@ html,body{
     justify-content: center;
 }
 
-#back-page {
-    overflow: hidden;
-    height: 30vh;
-    width: 50%;
-    position: relative;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin: 50px 0;
-    background-image: url('./assets/jungle.jpg');
-    background-position: center;
-    background-size: cover;
-    transition: all 0.4s linear; /* Smooth transition for background color change */
-    border-radius: 90px;
-    border: 3px solid #35480072;
-    box-shadow: 0px 0px 60px #354800d7;
-}
-#back-page h4{
-    font-size: 24px;
-    z-index: 2;
-    transition: all 0.45s linear;
-}
 #page3{
     height: 70vh;
     width: 100%;

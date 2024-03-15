@@ -115,10 +115,7 @@ gsap.from("#page4 h1",{
 
 document.addEventListener("DOMContentLoaded", function() {
     const arrow = document.getElementById('arrow');
-
-    // Add click event listener to the arrow
     arrow.addEventListener('click', function() {
-        // Scroll to the bottom of the page smoothly
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth'
