@@ -25,7 +25,7 @@ html,body{
 
 }
 .nav img{
-    height: 50px;
+    height: 100px;
 
 }
 .nav h4{
@@ -43,7 +43,7 @@ html,body{
     justify-content: center;
     bottom: 0%;
     left: -2%;
-    border: 2px solid #95c11e;
+    border: 2px solid #ffcc00;
     transition: all 0.5s ease;
 
 }
@@ -53,10 +53,10 @@ html,body{
 }
 #arrow:hover{
     scale: 0.6;
-    background-color: #95c11E;
+    background-color: #ffcc00;
 
 }
-video{
+.back{
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -80,12 +80,12 @@ video{
 }
 /* pseudo elements is used to write or implement something using css */
 #page1 h1::before{
-        content: "PET.BOND.PLAY.";
+        content: "PIXEL PALADINS";
         position: absolute; /* h1 me jo likha tha uske upar hi ja ke baith gya */
         color: black;
         top: -5px;
         left: -5px;
-        -webkit-text-stroke: 1px #95c11e;/* only 2 properties color and width*/
+        -webkit-text-stroke: 1px #ffcc00;/* only 2 properties color and width*/
         z-index: -1;
 }
 #page1 h1{
@@ -111,7 +111,7 @@ video{
 #cursor{
     height: 20px;
     width: 20px;
-    background-color: #95c11E;
+    background-color: #ffcc00;
     border-radius: 50%;
     position: fixed;
     z-index: 111;
@@ -119,7 +119,7 @@ video{
 #cursor-blur{
     height: 300px;
     width: 300px;
-    background-color: #96c11e3b;
+    background-color: #C1960080;
     filter: blur(40px);
     border-radius: 50%;
     position: fixed;
@@ -154,18 +154,18 @@ video{
     font-weight: 900;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-right: 40px;
-    -webkit-text-stroke: 2px #95c11E; /* it gives a boundary on only above part of the letter ,it is not same as border ,its different*/
+    -webkit-text-stroke: 2px #ffcc00; /* it gives a boundary on only above part of the letter ,it is not same as border ,its different*/
     transition: all 0.3s;
 }
 #scroller h4:hover{
-    color: #95c11E;
+    color: #ffcc00;
     font-size: 85px;
 }
 .scroller-in{
     display: inline-block;
     white-space: nowrap;
     animation-name: scroll;
-    animation-duration: 32s;
+    animation-duration: 15s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
@@ -182,7 +182,7 @@ video{
     height: 220px;
     border-radius: 20px;
     object-fit: cover;
-    border: 2px solid #95c11E;
+    border: 2px solid #ffcc00;
 }
 #about-us #about-us-in {
     text-align: center;
@@ -205,37 +205,38 @@ video{
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     position: relative;
     z-index: 10;
 } 
 .cards{
+    background-color: #ffcc00;
     height: 90%;
-    width: 16%;
+    width: 20%;
     /* background-color: aquamarine; */
     border-radius: 30px;
     background-size: cover;
     background-position: center;
-    border: 2px solid #95c11E;
+    border: 2px solid #ffcc00;
     /* jo kuch bhi cards se bahar ja rha hai usko hidden krdo from next line it is done through overflow hidden attribute */
     overflow: hidden;
     transition: all 0.3s ease;
+    text-align: center;
 }
 #card-1{
-    background-image: url('./assets/card1.jpg');
+    padding-left: 25px;
 }
 #card-2{
-    background-image: url(./assets/card2.jpg);
+    padding-left: 40px;
 }
 #card-3{
-    background-image: url(./assets/card3.jpg);
+    padding-left: 50px;
 }
 .overlay{
     height: 100%;
-    width: 100%;
-    background-color: #95c11E;
-    padding-top: 70px;
-    padding: 25px;
+    width: 80%;
+    padding-top: 25px;
+    text-align: center;
     opacity: 0;
     transition: all 0.7s ease;
 }
@@ -249,11 +250,13 @@ video{
     color: black;
     font-size: 33px;
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 900;
+    margin-bottom: 20px;
 
 }
 .overlay p {
     color: black;
+    font-size: 18px;
 }
 #jungle-container{
     width: 100%;
@@ -334,7 +337,7 @@ video{
 .elem h2{
     width: 100%;
     height: 100%;
-    background-color: #95c11E;
+    background-color: #ffcc00;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -366,14 +369,108 @@ video{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 900;
     position: absolute;
-    top: 16px;
+    top: -60px;
     color: #000;
     -webkit-text-stroke: 2px white;
 }
-#footer{
+
+.footer{
+    height: 35vh;
+    width: 100%;
+    background:linear-gradient(to left bottom,#C19600,#FFCC00,#FFFF57);
+    padding: 4vh 5vw 0 5vw;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-evenly ;
+  }
+  
+  .footer-section {
+    flex: 1;
+  }
+  
+  .footer-section h4 {
+    font-size: 2vw; 
+    margin-bottom: 3vh; 
+    color: #000;
+  }
+  
+  .footer-section p {
+    margin: 0.5vh 0; 
+    font-size: 1.3vw;
+    color: #000;
+  }
+  
+  .footer-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 0.5vh; 
+    color: #000;
+  }
+
+  .footer-section ul li a{
+    color: #000;
+  }
+  
+  .social-links {
+    display: flex;
+    padding: 0;
+  }
+  
+  .social-links li {
+    margin-right: 2vw;
+  }
+  
+  .social-links li:last-child {
+    margin-right: 0;
+  }
+  
+  .social-links a {
+    text-decoration: none;
+    font-size: 1.5vw; 
+    border: 1px solid black; 
+    border-radius: 50%; 
+    width: 3vw; 
+    height: 3vw;
+    display: inline-flex; 
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, border-width 0.3s; 
+    color: black; 
+  }
+  
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 3.3vh;
+    font-size: 1.2vw;
+  }
+
+  .footer-bottom p{
+    color: #000;
+  } 
+  
+  #team a{
+    text-decoration: none;
+    font-size: 1.3vw;
+  }
+
+  .social-links i{
+    color: #000;
+  }
+
+  .social-links a:hover {
+    transform: scale(1.1); 
+    border-width: 2.5px; 
+  }
+/*#footer{
     height: 40vh;
     width: 100%;
-    background:linear-gradient(to left bottom,#119F3A,#ace022,#6c871f);
+    background:linear-gradient(to left bottom,#C19600,#FFCC00,#FFFF57);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -386,7 +483,6 @@ video{
     flex-direction:row;
     width: 100%;
     height: 70%;
-    /* column-gap: 100px; */
 }
 #fbox2{
     display: flex;
@@ -417,14 +513,12 @@ video{
     font-weight: 500;
     font-family: fantasy;
     line-height: 25px;
-    /* color: #000; */
 }
 .store-hours p{
     font-size: 20px;
     font-weight: 500;
     font-family: fantasy;
     line-height: 25px;   
-    /* color: #000; */
 }
 .contact-info p{
     font-size: 20px;
@@ -445,17 +539,5 @@ video{
     font-family: fantasy;
     line-height: 25px;
     color: #000;
-}
+}*/
 /* FOR ARROW TAKE IT FROM REMIXICON WEBSITE IT IS  AFREE ANIMATED WEBSITE FOR SVG...*/
-
-
-
-
-
-
-
-
-
-
-
-
