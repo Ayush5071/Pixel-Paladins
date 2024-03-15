@@ -6,7 +6,10 @@ const userSchema = mongoose.Schema({
   name: String,
   email: String,
   password: String,
-  profileImage: String,
+  profileImage: {
+    type:String,
+    default:"defaultpic.jpg"
+  },
   cart: [{
     type: mongoose.Schema.Types.ObjectId,
     ref:'Product'

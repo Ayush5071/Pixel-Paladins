@@ -141,8 +141,11 @@ module.exports = router;
 //     res.redirect("/sprofile")
 // })
 
-router.get("/home",(req,res)=>{
-    res.render('home')
+router.get("/home",isLoggedIn,async(req,res)=>{
+    const user = await userModel.findOne({
+        username:req.session.passport.user
+    })
+    res.render('home',{user})
 })
 
 router.get("/product",isLoggedIn,async (req,res)=>{
@@ -194,14 +197,14 @@ router.post('/register',function(req,res){
     userModel.register(userdata, req.body.password)
     .then(function(registereduser){
     passport.authenticate("local")(req,res,function(){
-        res.redirect('/profile');
+        res.redirect('/home');
     });
 });
 
 });
 
 router.post('/login',passport.authenticate("local",{
-    successRedirect: "/profile",
+    successRedirect: "/home",
     failureRedirect: "/"
 }),function(req,res){
     
