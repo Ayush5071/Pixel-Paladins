@@ -2,15 +2,22 @@ const mongoose = require('mongoose');
 const plm = require('passport-local-mongoose');
 
 const orderSchema = new mongoose.Schema({
-  product : [{
+  product : {
     type:mongoose.Schema.Types.ObjectId,
     ref:"Product"
-  }],
-  productname:string,
+  },
+  user:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"user"
+  },
+  productname:String,
   address:String,
   username:String,
   price:Number,
   mode:String,
+  contact:Number,
+  productImage:String,
+  status:String
 });
 
 orderSchema.plugin(plm);

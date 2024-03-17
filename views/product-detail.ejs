@@ -17,24 +17,25 @@
     <div id="container">
         <div id="upper">
             <div id="left">
-                <div id="lup"><img src="/images/assets/ayush tiwari.jpeg" alt=""></div>
+                <div id="lup"><img src="/images/uploads/<%= product.productImage %>" alt=""></div>
                 <div id="ldown">
-                    <a href="/place-order">ORDER NOW</a>
+                        <a href="/place-order/<%= product._id %>">ORDER NOW</a>
+
                 </div>
             </div>
             <div id="righty">
-                <h1>PRODUCT NAME</h1>
+                <h1><%= product.title %></h1>
                 <div id="data">
                     <div id="data-left">
-                        <h3>MERCHANT COMPANY :</h3>
-                        <h3>PRICE :</h3>
-                        <h3>TYPE :</h3>
-                        <h3>ANY OTHER :</h3>
-                        <h3>OTHER :</h3>
+                        <h3>MERCHANT COMPANY : <%= product.brand  %></h3>
+                        <h3>PRICE : &#8377;<%= product.price  %></h3>
+                        <h3>TYPE : <%= product.type %></h3>
+                        <h3>LIKES : <%= product.likes %></h3>
+                        <h3>PURCHASES : <%= product.purchases %></h3>
                     </div>
                     <div id="data-right">
                         <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo autem dicta labore dolor sed? Neque ab, minima quasi ad obcaecati iure illo odit? Nesciunt aperiam eum recusandae voluptatum?
+                            <%= product.description  %>
                         </p>
                     </div>
 
@@ -46,26 +47,29 @@
                 <h2>REVIEW PRODUCT : </h2>
         </div>
             <div id="form">
-                <form action="/review" method="post" enctype="multipart/form-data">
-                    <label for="reviews"></label>
+                <form action="/review/<%= product._id %>" method="post" enctype="multipart/form-data">
+                    <label for="reviews">WRITE YOUR EXPERIENCE :</label>
                     <textarea name="reviews" id="" cols="30" rows="7"></textarea>
-                    <label for="reviewImage"></label>
+                    <label for="reviewImage">ADD IMAGE :</label>
                     <input type="file" name="reviewImage" id="">
+                    <input type="submit" value="submit">
                 </form>
             </div>
         </div>
         <div id="reviews">
             <h1>CUSTOMER'S REVIEW</h1>
+            <% review.forEach((e)=>{ %>
             <div id="review">
-                <div id="rleft"><img src="/images/assets/armour1.jpeg" alt=""></div>
+                <div id="rleft"><img src="/images/uploads/<%= e.reviewImage %>" alt=""></div>
                 <div id="rright">
                     <div id="user">
-                        <div id="name">Ayush Tiwari</div>
-                        <div id="photo"><img src="/images/assets/ayush tiwari.jpeg" alt=""></div>
+                        <div id="name"><%= e.user.username %></div>
+                        <div id="photo"><img src="/images/uploads/<%= e.userImage %>" alt=""></div>
                     </div>
-                    <div id="descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui amet autem temporibus atque. Odio nobis quidem quasi illum et architecto necessitatibus labore doloribus.</div>
+                    <div id="descr"><%= e.reviews %></div>
                 </div>
             </div>
+            <% }) %>
         </div>
     </div>
 

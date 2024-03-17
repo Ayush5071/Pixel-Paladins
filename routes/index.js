@@ -6,7 +6,8 @@ const localStrategy = require("passport-local")
 const sellerModel = require("./seller");
 const upload = require('./multer');
 const productModel = require('./product')
-
+const reviewModel = require("./review")
+const orderModel = require("./order")
 // Passport local strategy for users
 passport.use(new localStrategy(userModel.authenticate()));
 passport.use('seller-local', new localStrategy(sellerModel.authenticate()));
@@ -21,7 +22,7 @@ passport.use('seller-local', new localStrategy(sellerModel.authenticate()));
 //       if (!seller) { return done(null, false, { message: 'Incorrect email.' }); }
 //       if (seller.password !== password) { return done(null, false, { message: 'Incorrect password.' }); }
 //       return done(null, seller);
-//     });
+//     }
 //   }));
 
 // Routes for user authentication
@@ -31,6 +32,69 @@ router.get('/',function(req,res){
 
 router.get('/bot',(req,res)=>{
     res.render("chatbot")
+})
+router.get("/product/:id",isLoggedIn,async (req,res)=>{
+    const product = await productModel.findById(req.params.id);
+    const review = await reviewModel.find({productid:product._id});
+    res.render("product-detail",{product,review})
+})
+router.get("/review/:id",isLoggedIn,async (req,res)=>{
+    const product = await productModel.findById(req.params.id);
+    const user = await productModel.findByUsername(req.session.passport.user);
+    res.render("product-detail",{product,user});
+
+})
+router.post("/review/:id",isLoggedIn,upload.single("reviewImage"),async (req,res)=>{
+    const product = await productModel.findById(req.params.id);
+    const user = await userModel.findByUsername(req.session.passport.user)
+    const review = await reviewModel.create({
+        reviewImage:req.file.filename,
+        reviews:req.body.reviews,
+        productid:req.params.id,
+        product:product.title,
+        user:user._id
+    })
+    await user.save();
+    res.redirect(`/product/${product._id}`)
+
+})
+router.get("/place-order/:productid",isLoggedIn,async (req,res)=>{
+    const product = await productModel.findById(req.params.productid);
+
+    res.render("order-form",{product})
+})
+router.post("/place-order/:id",isLoggedIn,async (req,res)=>{
+    const product = await productModel.findById(req.params.id);
+    const user = await userModel.findByUsername(req.session.passport.user)
+    const seller = await sellerModel.findOne({products:product._id})
+
+    const order = await orderModel.create({
+        product:product._id,
+        user:user._id,
+        productname:product.title,
+        address : req.body.address,
+        username : user.username,
+        price: product.price,
+        mode:req.body.mode,
+        contact:req.body.contact,
+        productImage:product.productImage,
+        status:"ordered"
+    })
+    await order.save(),
+    user.orders.push(order._id);
+    await user.save()
+    seller.sales.push(order._id)
+    await seller.save()
+    res.redirect(`/product/${product._id}`)
+})
+router.get("/yourorder",isLoggedIn,async (req,res)=>{
+    const user = await userModel.findByUsername(req.session.passport.user).populate("orders");
+    const order = await orderModel.find({user:user._id});
+    res.render("yourorder",{user});
+})
+router.get("/s-Orders/:id",async (req,res)=>{
+    const seller = await sellerModel.findById(req.params.id).populate('sales');
+    res.render("seller-order",{seller})
 })
 
 // Route for seller profile page
@@ -73,10 +137,6 @@ router.post("/add-to-cart/:productId",isLoggedIn,async (req,res)=>{
 })
 
 //code for order
-
-router.get("/order",(req,res)=>{
-     res.render('order-form')
-})
 
 //code for cart 
 
@@ -129,7 +189,7 @@ router.get('/product/:productId', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-module.exports = router;
+// module.exports = router;
 
 // router.post("/seller-profile-image",upload.single("profileimage"),async (req,res)=>{
 //     var username = req.session.username;

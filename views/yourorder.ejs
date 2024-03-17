@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/cart.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+<body>
+    <div id="main">
+        <div id="nav">
+            <div id="logo"><img src="/images/assets/logo.png" alt=""></div>
+            <div id="right">
+                <a href="/home">Home</a><a href="/product">Products</a><a href="/bot">Bot</a><a href="/logout" id="logout">Logout</a>
+            </div>
+        </div>
+        <div id="page1">
+            <div id="products">
+    <% user.orders.forEach((e)=>{ %>
+                <div class="product">
+                    <div class="image">
+                        <img src="/images/uploads/<%= e.productImage %>" alt="">
+                    </div>
+                    <div class="odata">
+                        <h3>USERNAME : <%= e.username %></h3>
+                            <h3>PRODUCT : <%=e.productname %></h3>
+                            <h3>PRICE : &#8377; <%=e.price %></h3>
+                            <h3>PAYMENT : <%=e.mode %></h3>
+                            <h3>CONTACT :<%=e.contact %></h3>
+                            <h3>STATUS :<%=e.status %></h3>
+
+
+                        <div id="icons">
+                            <!-- <a href="#" class="add-to-cart" data-productid="<%= e._id %>"><i class="ri-shopping-cart-fill"></i> Add to cart</a> -->
+                            <!-- <a href="#" class="remove-from-cart" data-productid="<%= e._id %>"><i class="ri-close-circle-fill"></i> Remove from cart</a> -->
+                            <a href="/product/<%= e.product %>"><i class="ri-arrow-right-circle-line"></i></a>
+                        </div>
+
+
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+
+<script src="/javascripts/cart.js"></script>   
+
+
+</body>
+</html>

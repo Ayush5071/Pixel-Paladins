@@ -44,3 +44,25 @@ document.querySelectorAll('.remove-from-cart').forEach(function (link) {
             });
     });
 });
+const search = () => {
+    const searchbox = document.getElementById("filter").value.toUpperCase();
+    const filterType = document.getElementById("filter-type").value;
+    const products = document.querySelectorAll("#products .product");
+
+    products.forEach(product => {
+        const dataElement = product.querySelector(`.${filterType}`);
+        if (dataElement) {
+            let textvalue = dataElement.textContent || dataElement.innerHTML;
+            if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
+                product.style.display = "";
+            } else {
+                product.style.display = "none";
+            }
+        }
+    });
+}
+document.getElementById("filter").addEventListener("input", search);
+document.getElementById("filter-type").addEventListener("change", search);
+
+
+

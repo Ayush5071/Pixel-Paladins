@@ -18,7 +18,11 @@ const userSchema = mongoose.Schema({
   purchases: {
     type:Array,
     default:[]
-  }
+  },
+  orders:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"order"
+  }]
 });
 userSchema.plugin(plm) //this is also required 
 module.exports = mongoose.model("user",userSchema)

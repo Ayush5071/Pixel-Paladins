@@ -128,8 +128,8 @@ html,body{
     gap: 2vw;
 }
 .product{
-    height: 50vh;
-    width: 17vw;
+    height: 60vh;
+    width: 22vw;
     background-color: rgb(240, 234, 234);
     /* display: flex; */
     flex-direction: column;
@@ -223,5 +223,42 @@ html,body{
     text-decoration: none;
 }
 #seemore i{
+    color: black;
+}
+/* CODING FOPR SELLER - ORDER   */
+.sproduct{
+    height: 25vh;
+    width: 35vw;
+    background-color: rgb(240, 234, 234);
+    display: flex;
+    gap: 15px;
+    padding: 6px 12px;
+    border: 2px solid rgb(218, 218, 218);
+    box-shadow: 8px 5px 9px 0px black;
+    border-radius: 15px;
+}
+.simage {
+    width: 30%;
+    height: 100%;
+
+}
+.simage img{
+    width: 100%;
+    height: 100%;
+}
+.sdata{
+    display: flex;
+    width: 70%;
+    height: 100%;
+    color: black;
+    flex-direction: column;
+    gap: 1px;
+
+}
+.sdata h3{
+    color: black;
+}
+/* for order section  */
+.odata h3{
     color: black;
 }

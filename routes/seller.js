@@ -1,8 +1,6 @@
 // models/seller.js
-
 const mongoose = require('mongoose');
 const plm = require('passport-local-mongoose');
-
 const sellerSchema = new mongoose.Schema({
   username: String,
   email: String,
@@ -14,13 +12,9 @@ const sellerSchema = new mongoose.Schema({
   }],
   sales:[{
     type:mongoose.Schema.Types.ObjectId,
-    ref:"user"
+    ref:"order"
   }],
   brandname:String
-
 });
-
 sellerSchema.plugin(plm);
-
 module.exports = mongoose.model('Seller', sellerSchema);
-

@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    color: aliceblue;
+    color: black;
     box-sizing: border-box;
     font-family: 'montserrat';
 
@@ -24,9 +24,10 @@ html,body{
 #nav a {
     text-decoration: none;
     font-size: 1.5vw;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 0.5vw 1vw;
     border-radius: 50px;
+    color: #fdfdfd;
 }
 #nav #logo{
     height: 8vw;
@@ -127,8 +128,8 @@ html,body{
     gap: 2vw;
 }
 .product{
-    height: 50vh;
-    width: 18vw;
+    height: 55vh;
+    width: 21vw;
     background-color: rgb(240, 234, 234);
     /* display: flex; */
     flex-direction: column;
@@ -158,7 +159,7 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: center;
-    row-gap: 10px;
+    row-gap: 6px;
     flex-direction: column;
     color: black;
     /* background-color: aqua; */
@@ -191,36 +192,48 @@ html,body{
 
 #icons a{
     text-decoration: none;
-    padding: 4px 9px;
+    padding: 7px 14px;
     background-color: black;
-    font-weight: 800;
+    /* font-weight: 800; */
     color: aliceblue;
     font-size: 12px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2px;
+    text-align: center;
+    /* gap: 2px; */
 }
 #icons i{
-    font-size: large;
+    font-size: 19px;
 }
 #upper{
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    padding: 2px 3px;
+    padding: 1px 2px;
     color: black;
 }
 #upper h3{
     color: black;
 }
-#seemore a{
-    font-size: 20px;
+.seemore a{
+    font-size: 35px;
     color: black;
     text-decoration: none;
 }
-#seemore i{
+.seemore i{
     color: black;
+}
+#filter-type{
+    background-color: black;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 13px;
+    border: 1px solid white;
+}
+#filter-type option{
+    background-color: #393939;
+    color:white
 }

@@ -24,7 +24,7 @@
             <img src="/images/assets/logo.png" alt="">
         </div>
         <div id="righty">
-            <a href="/s-Orders">Orders</a>
+            <a href="/s-Orders/<%= seller._id %>">Orders</a>
             <!-- <a href="/s-products">Your Products</a> -->
             <a href="/">Logout</a>
         </div>
@@ -66,13 +66,10 @@
                             </div>
                             <div id="brand">
                                                         <h3><%=e.brand %></h3>
-                                                        <h3><%=e.types %></h3>
-                                                        <h3><%=e.likes %></h3>
+                                                        <h3><%=e.type %></h3>
+                                                        <!-- <h3><%=e.likes %></h3> -->
                                                     </div>
-                                                    <h3><%=e.purchases %></h3>
-
-    
-    
+                                                    <h3>Sales : <%=e.purchases %></h3>
                         </div>
                     </div>
                     <% }) %>
