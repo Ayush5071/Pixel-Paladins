@@ -237,3 +237,11 @@ html,body{
     background-color: #393939;
     color:white
 }
+#voicebtn{
+    font-size: 35px;
+    border-radius: 50%;
+    color: white;
+    position: relative;
+    left: 10px;
+    /* background-color: black; */
+}

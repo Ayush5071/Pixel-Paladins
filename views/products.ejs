@@ -28,6 +28,7 @@
                         <option value="price">Price</option>
                         <option value="brand">Brand</option>
                     </select>
+                    <button id="voicebtn" type="button"><i class="ri-mic-line"></i></button>
                 </form>
             </div>
             <div id="products">
@@ -65,5 +66,37 @@
     </div>
 
     <script src="/javascripts/product.js"></script>
+    <script>
+        const voiceSearchButton = document.getElementById('voicebtn');
+        const searchInput = document.getElementById('filter');
+    
+        if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.continuous = false;
+            recognition.lang = 'en-US';
+    
+            recognition.onresult = function(event) {
+                console.log(event)
+                let transcript = '';
+                for (let i = 0; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+
+                }
+                transcript = transcript.slice(0, -1);
+                searchInput.value = transcript; 
+            };
+    
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error:', event.error);
+            };
+    
+            voiceSearchButton.addEventListener('click', function() {
+                recognition.start();
+            });
+        } else {
+            console.error('Speech recognition not supported in this browser.');
+        }
+    </script>
+    
 </body>
 </html>
