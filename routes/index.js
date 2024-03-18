@@ -29,6 +29,53 @@ passport.use('seller-local', new localStrategy(sellerModel.authenticate()));
 router.get('/',function(req,res){
     res.render('index');
 });
+//roues for recommendation system 
+// Function to recommend products based on the most frequent product type purchased by the user
+async function recommendProducts(userId) {
+    try {
+        const user = await userModel.findById(userId).populate({
+            path: 'orders',
+            populate: {
+                path: 'product',
+                model: 'Product' // Assuming 'Product' is the name of your product model
+            }
+        });
+        if (!user) {
+            throw new Error('User not found');
+        }
+        console.log(user)
+        const productTypeCounts = {};
+        user.orders.forEach(order => {
+            const productType = order.product.type;
+            console.log(productType)
+            productTypeCounts[productType] = (productTypeCounts[productType] || 0) + 1;
+        });
+
+        const sortedProductTypes = Object.keys(productTypeCounts).sort((a, b) => productTypeCounts[b] - productTypeCounts[a]);
+        const recommendedProducts = await productModel.find({ type: sortedProductTypes[0] }).limit(10);
+
+        return recommendedProducts;
+    } catch (err) {
+        console.error(err);
+        throw new Error('Failed to generate recommendations');
+    }
+}
+
+//Route for recommending products
+router.get("/recommend", isLoggedIn, async (req, res) => {
+    try {
+        const user = await userModel.findOne({ username: req.session.passport.user });
+        const recProducts = await recommendProducts(user._id);
+        res.render('recommend', { recommendedProducts: recProducts });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Failed to fetch recommendations');
+    }
+});
+
+
+
+
 
 router.get('/bot',(req,res)=>{
     res.render("chatbot")
@@ -217,7 +264,7 @@ router.get("/product",isLoggedIn,async (req,res)=>{
 })
 router.get("/addproduct", async (req, res) => {
     const username = req.query.username;
-    console.log(username)
+    console.log(username);
     if (!username) {
         // Handle the case where username is not provided
         return res.redirect("/sprofile"); // Redirect to sprofile or handle appropriately

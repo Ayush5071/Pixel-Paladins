@@ -120,10 +120,11 @@ body,html{
 
 }
 #data #data-right{
-    display: flex;
+    /* display: flex; */
     text-align: center;
-    justify-content: center;
-    width: 60%;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    width: 50%;
 }
 #bottom{
     display: flex;

@@ -15,10 +15,10 @@ const userSchema = mongoose.Schema({
     ref:'Product'
   }],
   number: Number,
-  purchases: {
-    type:Array,
-    default:[]
-  },
+  // purchases: {
+  //   type:Array,
+  //   default:[]
+  // },
   orders:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:"order"
