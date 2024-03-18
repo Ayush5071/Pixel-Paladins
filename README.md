@@ -18,7 +18,12 @@
 - payment through cards.
 - products are dynamic that can be send through seller side.
 - specific page of each product
-- user can add review below products section and also seee review of others 
+- user can add review below products section and also see review of others
+- customized chat bot
+- customizable profiles
+- we can add or delete item from the cart
+- sellers can check their respective orders.
+
 ## Advanced Features : 
 - Customer Support :
   -  Includes a chatbot feature tp reach out for assistance.
