@@ -11,6 +11,8 @@ const Seller = require('./routes/seller'); // Require the seller model
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const app = express();
+var Publishable_Key = 'Your_Publishable_Key'
+var Secret_Key = 'Your_Secret_Key'
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,6 +42,7 @@ passport.deserializeUser(Seller.deserializeUser());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sellers', Seller); // Include seller routes
+
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -12,7 +12,7 @@
         <div id="nav">
             <div id="logo"><img src="/images/assets/logo.png" alt=""></div>
             <div id="right">
-                <a href="/home">Home</a><a href="/product">Products</a><a href="/bot">Bot</a><a href="/logout" id="logout">Logout</a>
+                <a href="/sprofile">Profile</a><a href="/logout" id="logout">Logout</a>
             </div>
         </div>
         <div id="page1">
@@ -27,6 +27,7 @@
                             <h3>Product : <%=e.productname %></h3>
                             <h3> Price : &#8377; <%=e.price %></h3>
                             <h3>Payment : <%=e.mode %></h3>
+                            <h3>Address : <%= e.address %></h3>
                             <h3>Contact : <%=e.contact %></h3>
                             <h3>Status : <%=e.status %></h3>
 

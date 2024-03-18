@@ -227,8 +227,8 @@ html,body{
 }
 /* CODING FOPR SELLER - ORDER   */
 .sproduct{
-    height: 25vh;
-    width: 35vw;
+    height: 29vh;
+    width: 38vw;
     background-color: rgb(240, 234, 234);
     display: flex;
     gap: 15px;

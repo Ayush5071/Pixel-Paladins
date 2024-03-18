@@ -8,6 +8,7 @@ const upload = require('./multer');
 const productModel = require('./product')
 const reviewModel = require("./review")
 const orderModel = require("./order")
+var stripe = require('stripe')('sk_test_51OvdslSHOgBCTCQbLwtAmCvS8havkRqnEVIlh5gWRLkjnXZxBbY13EVtHh3XRqeOdIp6cSBhoxxXL5gJORBoSsmq00Zgz9i15S');
 // Passport local strategy for users
 passport.use(new localStrategy(userModel.authenticate()));
 passport.use('seller-local', new localStrategy(sellerModel.authenticate()));
@@ -29,7 +30,77 @@ passport.use('seller-local', new localStrategy(sellerModel.authenticate()));
 router.get('/',function(req,res){
     res.render('index');
 });
-//roues for recommendation system 
+
+
+// paymant routes ......
+var Publishable_Key = 'pk_test_51OvdslSHOgBCTCQbl5vdNaMmn5d9Bof749HE2Qf4F1n3NIofGESlZZEc5YQAT7pvwWA3zMpXiOj8rZBPnbaXOhx800k7g0ELra'
+
+router.get("/success",isLoggedIn,(req,res)=>{
+    res.render("success");
+})
+// Backend route handlers
+router.get('/payment/:id', async function(req, res){
+    try {
+        const productid = req.params.id;
+        const product = await productModel.findOne({_id: productid});
+        if (!product) {
+            return res.status(404).send("Product not found");
+        }
+        res.render('payment', { key: Publishable_Key, product });
+    } catch (error) {
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+router.post('/payment/:id', isLoggedIn, async function(req, res){
+    try {
+        const user = await userModel.findOne({ username: req.session.passport.user });
+        const productId = req.params.id;
+        const product = await productModel.findById(productId);
+        if (!product) {
+            return res.status(404).send("Product not found");
+        }
+
+        // Create a PaymentIntent to handle the payment
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: product.price * 100, // Stripe expects amount in cents
+            currency: 'INR',
+            payment_method_types: ['card'],
+            customer: user.stripeCustomerId, // Assuming you have a stripeCustomerId field in your user model
+            setup_future_usage: 'off_session',
+            confirm: true,
+            payment_method_data: {
+                type: 'card',
+                card: {
+                    token: req.body.stripeToken
+                }
+            },
+            description: product.title,
+            shipping: {
+                address: {
+                    line1: req.body.address,
+                    city: 'Indore',
+                    postal_code: '452331',
+                    state: 'Madhya Pradesh',
+                    country: 'IN'
+                },
+                name: req.body.name,
+                phone: req.body.phone
+            },
+            receipt_email: req.body.email,
+        });
+
+        // Handle successful payment
+        res.redirect("/success");
+    } catch (error) {
+        // Handle payment error
+        res.status(500).send("Payment Error: " + error.message);
+    }
+});
+
+
+
+
 // Function to recommend products based on the most frequent product type purchased by the user
 async function recommendProducts(userId) {
     try {
@@ -82,7 +153,7 @@ router.get('/bot',(req,res)=>{
 })
 router.get("/product/:id",isLoggedIn,async (req,res)=>{
     const product = await productModel.findById(req.params.id);
-    const review = await reviewModel.find({productid:product._id});
+    const review = await reviewModel.find({productid:product._id}).populate("user");
     res.render("product-detail",{product,review})
 })
 router.get("/review/:id",isLoggedIn,async (req,res)=>{
@@ -101,7 +172,7 @@ router.post("/review/:id",isLoggedIn,upload.single("reviewImage"),async (req,res
         product:product.title,
         user:user._id
     })
-    await user.save();
+    await review.save();
     res.redirect(`/product/${product._id}`)
 
 })
@@ -132,7 +203,7 @@ router.post("/place-order/:id",isLoggedIn,async (req,res)=>{
     await user.save()
     seller.sales.push(order._id)
     await seller.save()
-    res.redirect(`/product/${product._id}`)
+    res.redirect(`/payment/${product._id}`)
 })
 router.get("/yourorder",isLoggedIn,async (req,res)=>{
     const user = await userModel.findByUsername(req.session.passport.user).populate("orders");
