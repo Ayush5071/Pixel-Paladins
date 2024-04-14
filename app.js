@@ -1,5 +1,3 @@
-// app.js
-
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -13,6 +11,8 @@ const usersRouter = require('./routes/users');
 const app = express();
 var Publishable_Key = 'Your_Publishable_Key'
 var Secret_Key = 'Your_Secret_Key'
+const admin = require('firebase-admin');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +30,30 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const serviceAccount = require('./serviceAccountKey.json');
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+
+// app.js
+// function sendPushNotification(token, title, body) {
+//   const message = {
+//     notification: {
+//       title: title,
+//       body: body,
+//     },
+//     token: token,
+//   };
+
+//   admin.messaging().send(message)
+//     .then((response) => {
+//       console.log('Notification sent successfully:', response);
+//     })
+//     .catch((error) => {
+//       console.error('Error sending notification:', error);
+//     });
+// }
+
 // Serializing and deserializing user
 passport.serializeUser(usersRouter.serializeUser());
 passport.deserializeUser(usersRouter.deserializeUser());
@@ -43,8 +67,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sellers', Seller); // Include seller routes
 
-
-// Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });

@@ -3,7 +3,8 @@
     padding: 0;
     color: aliceblue;
     box-sizing: border-box;
-    font-family: 'montserrat';
+    /* font-family: 'montserrat' */
+    font-family: 'Poppins';
 
 }
 html,body{

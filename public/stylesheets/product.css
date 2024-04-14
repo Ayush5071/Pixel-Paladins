@@ -3,7 +3,8 @@
     padding: 0;
     color: black;
     box-sizing: border-box;
-    font-family: 'montserrat';
+    /* font-family: 'montserrat'; */
+    font-family: 'Poppins';
 
 }
 html,body{
@@ -128,8 +129,8 @@ html,body{
     gap: 2vw;
 }
 .product{
-    height: 55vh;
-    width: 21vw;
+    height: 58vh;
+    width: 22vw;
     background-color: rgb(240, 234, 234);
     /* display: flex; */
     flex-direction: column;
@@ -141,7 +142,7 @@ html,body{
     border-radius: 15px;
 }
 .product .image{
-    height: 60%;
+    height: 50%;
     width: 100%;
     object-fit: cover;
     object-position: center;
@@ -154,12 +155,12 @@ html,body{
 
     }
 .data{
-    height: 40%;
+    height: 50%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    row-gap: 6px;
+    /* row-gap: px; */
     flex-direction: column;
     color: black;
     /* background-color: aqua; */
@@ -185,7 +186,7 @@ html,body{
     align-items: center;
     justify-content: space-between;
     color: aliceblue;
-    font-size: 11px;
+    font-size: 9px;
     text-decoration: none;
     padding: 3px 5px;
 }

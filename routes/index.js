@@ -8,9 +8,11 @@ const upload = require('./multer');
 const productModel = require('./product')
 const reviewModel = require("./review")
 const orderModel = require("./order")
+const sendPushNotification = require('../app');
 var stripe = require('stripe')('sk_test_51OvdslSHOgBCTCQbLwtAmCvS8havkRqnEVIlh5gWRLkjnXZxBbY13EVtHh3XRqeOdIp6cSBhoxxXL5gJORBoSsmq00Zgz9i15S');
 // Passport local strategy for users
 passport.use(new localStrategy(userModel.authenticate()));
+//PASSPRORT LOCAL STRATEGY FOR SELLER 
 passport.use('seller-local', new localStrategy(sellerModel.authenticate()));
 
 // Passport local strategy for sellers
@@ -61,12 +63,11 @@ router.post('/payment/:id', isLoggedIn, async function(req, res){
             return res.status(404).send("Product not found");
         }
 
-        // Create a PaymentIntent to handle the payment
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: product.price * 100, // Stripe expects amount in cents
+            amount: product.price * 100,
             currency: 'INR',
             payment_method_types: ['card'],
-            customer: user.stripeCustomerId, // Assuming you have a stripeCustomerId field in your user model
+            customer: user.stripeCustomerId,
             setup_future_usage: 'off_session',
             confirm: true,
             payment_method_data: {
@@ -90,25 +91,20 @@ router.post('/payment/:id', isLoggedIn, async function(req, res){
             receipt_email: req.body.email,
         });
 
-        // Handle successful payment
         res.redirect("/success");
     } catch (error) {
-        // Handle payment error
         res.status(500).send("Payment Error: " + error.message);
     }
 });
 
-
-
-
-// Function to recommend products based on the most frequent product type purchased by the user
+//recommendation system
 async function recommendProducts(userId) {
     try {
         const user = await userModel.findById(userId).populate({
             path: 'orders',
             populate: {
                 path: 'product',
-                model: 'Product' // Assuming 'Product' is the name of your product model
+                model: 'Product' 
             }
         });
         if (!user) {
@@ -131,8 +127,16 @@ async function recommendProducts(userId) {
         throw new Error('Failed to generate recommendations');
     }
 }
+//route for some new additiion to teh features 
 
-//Route for recommending products
+// router.get("/coins",isLoggedIn,async (req,res)=>{
+//     const username = req.session.passport.user
+//     const user = await userModel.findOne({username:username})
+//     res.render("coin-page");
+// })
+
+
+//route for recommending products
 router.get("/recommend", isLoggedIn, async (req, res) => {
     try {
         const user = await userModel.findOne({ username: req.session.passport.user });
@@ -151,6 +155,7 @@ router.get("/recommend", isLoggedIn, async (req, res) => {
 router.get('/bot',(req,res)=>{
     res.render("chatbot")
 })
+//related to order and products
 router.get("/product/:id",isLoggedIn,async (req,res)=>{
     const product = await productModel.findById(req.params.id);
     const review = await reviewModel.find({productid:product._id}).populate("user");
@@ -218,11 +223,9 @@ router.get("/s-Orders/:id",async (req,res)=>{
 // Route for seller profile page
 router.get('/sprofile', async function(req, res) {
     try {
-        // Retrieve the seller details from the database based on the username stored in the session
         const username = req.session.username;
         
         if (!username) {
-            // If username not found in session, redirect to login page
             return res.redirect('/slogin');
         }
 
@@ -230,16 +233,13 @@ router.get('/sprofile', async function(req, res) {
         console.log(seller);
 
         if (!seller) {
-            // If seller not found, handle the case appropriately (e.g., redirect to login page)
             return res.redirect('/slogin');
         }
 
-        // Render the seller profile page and pass the seller details to the template
         res.render('seller-profile', { seller: seller });
     } catch (error) {
-        // Handle any errors that occur during the process
         console.error(error);
-        res.redirect('/slogin'); // Redirect to login page or handle appropriately
+        res.redirect('/slogin');
     }
 });
 
@@ -254,7 +254,6 @@ router.post("/add-to-cart/:productId",isLoggedIn,async (req,res)=>{
     res.status(200)
 })
 
-//code for order
 
 //code for cart 
 
@@ -286,10 +285,10 @@ router.delete("/removefromcart/:productId", async (req, res) => {
             { username: username },
             { $pull: { cart: productId } }
         );
-        res.sendStatus(204); // Send a success response
+        res.sendStatus(204);
     } catch (error) {
         console.error('Error removing item from cart:', error);
-        res.sendStatus(500); // Send an error response
+        res.sendStatus(500);
     }
 });
 
@@ -307,17 +306,32 @@ router.get('/product/:productId', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-// module.exports = router;
 
-// router.post("/seller-profile-image",upload.single("profileimage"),async (req,res)=>{
-//     var username = req.session.username;
-//     console.log(username)
-//     const seller = await sellerModel.findOne({username:username})
-//     console.log(seller)
-//     seller.profileimage = req.file.filename;
-//     await seller.save();
-//     res.redirect("/sprofile")
+
+
+//ROUTES FOR DETAILED ORDERS 
+
+// router.get("/detailedorder/:productid",isLoggedIn,async (req,res)=>{
+//     const productid = req.params.productid
+//     const username = req.session.passport.user
+//     const user = await userModel.findOne({username:username})
+//     const product = await productModel.findOne({_id:productid})
+//     const order = await orderModel.findOne({product:productid})
+//     res.render("detailedorder",{order,product,user});
 // })
+
+//GET ROUTES FOR ADVWRTISEMNT 
+
+// res.get("/advertisement/:sellerid",isLoggedIn,async (req,res)=>{
+//     const sellerid = req.params.sellerid;
+//     const seller = await sellerid.findOne({_id:sellerid})
+//     const product = await productModel.find({seller:sellerid})
+//     res.render("advertisement");
+// })
+
+
+
+
 
 router.get("/home",isLoggedIn,async(req,res)=>{
     const user = await userModel.findOne({
@@ -337,18 +351,17 @@ router.get("/addproduct", async (req, res) => {
     const username = req.query.username;
     console.log(username);
     if (!username) {
-        // Handle the case where username is not provided
-        return res.redirect("/sprofile"); // Redirect to sprofile or handle appropriately
+
+        return res.redirect("/sprofile");
     }
     const seller = await sellerModel.findOne({ username: username });
     if (!seller) {
-        // Handle the case where seller is not found
-        return res.redirect("/sprofile"); // Redirect to sprofile or handle appropriately
+
+        return res.redirect("/sprofile"); 
     }
     const product = await productModel.find({seller:seller._id})
     // console.log(product)
     // console.log(seller)
-    // Render the add-product page and pass the seller data
     res.render('add-product', { seller: seller });
 });
 router.get('/profile',isLoggedIn,async function(req,res){
@@ -359,6 +372,7 @@ router.get('/profile',isLoggedIn,async function(req,res){
 
 router.get('/blogin',function(req,res){
     res.render('blogin');
+
 });
 
 router.get('/bsignup',function(req,res){
@@ -384,7 +398,10 @@ router.post('/register',function(req,res){
 router.post('/login',passport.authenticate("local",{
     successRedirect: "/home",
     failureRedirect: "/"
-}),function(req,res){
+}),async function( req,res){
+    // let user = await userModel.findOne({username: req.session.passport.user});
+    // user.fcmToken = fcmToken;
+    // await user.save();
     
 });
 
@@ -414,7 +431,7 @@ router.post('/slogin', function(req, res, next) {
             if (err) {
                 return next(err);
             }
-            req.session.username = user.username; // Set the username in the session
+            req.session.username = user.username; 
             return res.redirect('/sprofile');
         });
     })(req, res, next);
@@ -480,27 +497,26 @@ router.post('/seller-p-image-upload',upload.single("simage"),async (req,res,next
   
   })
 
-
+router.post("/updatestatus/:orderid",async (req,res)=>{
+    const order = await orderModel.findOne({_id:req.params.orderid});
+    order.status = req.body.mode;
+    await order.save();
+    res.redirect("/sprofile")
+})
   router.post('/setproduct', upload.single('productImage'), async (req, res) => {
-    // Check if username exists in the session
     if (!req.session.username) {
-        // Handle the case where username is not available in the session
-        return res.redirect('/sprofile'); // Redirect to sprofile or handle appropriately
+        return res.redirect('/sprofile')
     }
 
     try {
         const username = req.session.username;
-        // Find the seller document using the username
         const seller = await sellerModel.findOne({ username: username });
         console.log(seller)
 
-        // If seller not found, handle the case appropriately
         if (!seller) {
-            // Handle the case where seller is not found
-            return res.redirect('/sprofile'); // Redirect to sprofile or handle appropriately
+            return res.redirect('/sprofile');
         }
 
-        // Create a new product using the seller's ID and the form data
         const product = await productModel.create({
             seller: seller._id,
             price: req.body.price,
@@ -510,28 +526,16 @@ router.post('/seller-p-image-upload',upload.single("simage"),async (req,res,next
             description:req.body.description,
             type:req.body.type
         });
-
-        // Push the product's ID to the seller's products array
         seller.products.push(product._id);
 
-        // Save the changes to the seller document
         await seller.save();
         console.log(product)
 
-        // Redirect to sprofile after successfully adding the product
         res.redirect('/sprofile');
     } catch (error) {
-        // Handle any errors that occur during the process
         console.error(error);
-        res.redirect('/sprofile'); // Redirect to sprofile or handle appropriately
+        res.redirect('/sprofile');
     }
 });
 
 module.exports = router;
-// router.post('/fileupload',isLoggedIn,upload.single("image"),async (req,res,next)=>{
-//     const user = await userModel.findOne({username: req.session.passport.user}); //jab bhi aap logged in honge req.session.passport.user => username
-//     user.profileImage = req.file.filename; //jo bhi file upload hui hai wo iske andar save hota hai hamesha
-//     await user.save(); //kyuki hamne haath se changes kiye hai isliye hme save krna hoga
-//     res.redirect('/profile');
-  
-//   })

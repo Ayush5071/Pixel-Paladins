@@ -1,0 +1,38 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    height: 100%;
+    width: 100%;
+
+}
+
+#container{
+    background-color:  rgb(30, 29, 29) ;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+}
+form{
+    border: 2px solid whitesmoke;
+    padding: 30px 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 16px;
+
+}
+form input,textarea,button{
+    padding: 4px 5px;
+    border-radius: 14px;
+    border: 1px solid white;
+    font-size: 18px;
+}
